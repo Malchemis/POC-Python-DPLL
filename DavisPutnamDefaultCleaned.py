@@ -1,5 +1,8 @@
 import logging
 import time
+# import cProfile
+# import pstats
+# import io
 
 
 def is_tautology(clause: list) -> bool:
@@ -181,7 +184,7 @@ def find_non_single_literal(clauses: list) -> int:
 
 def fifth_rule(clauses: list) -> tuple:
     """
-    Rule 5: Create new branches by choosing a literal and splitting the problem into two subproblems.
+    Rule 5: Create new branches by choosing a literal and splitting the problem into two sub-problems.
 
     :param clauses: List of clauses.
     :return: A tuple containing two lists of clauses representing the new branches.
@@ -332,21 +335,15 @@ def test_dimacs_conversion():
     logger.info(f'Converted DIMACS:\n{dimacs}')
 
 
-if __name__ == '__main__':
+def main():
     # Main variables
     testing = False
+    large_problems = True
+    global counter
 
     # Folder names for SAT and UNSAT problems
     sat_folder = 'uf50'
     unsat_folder = 'uuf50'
-
-    # Set up logging
-    logger = logging.getLogger(__name__)
-    logger.setLevel(logging.INFO)
-    handler = logging.StreamHandler()
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    handler.setFormatter(formatter)
-    logger.addHandler(handler)
 
     # Testing the rules
     if testing:
@@ -378,23 +375,76 @@ if __name__ == '__main__':
     end = time.time()
     logger.info(f'Formula is {"satisfiable" if satisfiable else "unsatisfiable"} after {counter} steps in {end - start:.2f} seconds.')
 
-    # Large problems
     # Read CNF file and run DP
-    cnf_file = f'uf175-01.cnf'
+    cnf_file = f'{sat_folder}/uf50-010.cnf'
     clauses = read_cnf(cnf_file)
     counter = 0
     logger.info(f'Starting DP with clauses from {cnf_file}')
     start = time.time()
     satisfiable = dp(clauses)
     end = time.time()
-    logger.info(f'Formula is {"satisfiable" if satisfiable else "unsatisfiable"} after {counter} steps in {end - start:.2f} seconds.')
+    logger.info(
+        f'Formula is {"satisfiable" if satisfiable else "unsatisfiable"} after {counter} steps in {end - start:.2f} seconds.')
 
     # Read CNF file and run DP
-    cnf_file = f'uuf150-01.cnf'
+    cnf_file = f'{unsat_folder}/uuf50-010.cnf'
     clauses = read_cnf(cnf_file)
     counter = 0
     logger.info(f'Starting DP with clauses from {cnf_file}')
     start = time.time()
     satisfiable = dp(clauses)
     end = time.time()
-    logger.info(f'Formula is {"satisfiable" if satisfiable else "unsatisfiable"} after {counter} steps in {end - start:.2f} seconds.')
+    logger.info(
+        f'Formula is {"satisfiable" if satisfiable else "unsatisfiable"} after {counter} steps in {end - start:.2f} seconds.')
+
+    if large_problems:
+        # Large problems
+        # Read CNF file and run DP
+        cnf_file = f'uf175-01.cnf'
+        clauses = read_cnf(cnf_file)
+        counter = 0
+        logger.info(f'Starting DP with clauses from {cnf_file}')
+        start = time.time()
+        satisfiable = dp(clauses)
+        end = time.time()
+        logger.info(f'Formula is {"satisfiable" if satisfiable else "unsatisfiable"} after {counter} steps in {end - start:.2f} seconds.')
+
+        # Read CNF file and run DP
+        cnf_file = f'uuf150-01.cnf'
+        clauses = read_cnf(cnf_file)
+        counter = 0
+        logger.info(f'Starting DP with clauses from {cnf_file}')
+        start = time.time()
+        satisfiable = dp(clauses)
+        end = time.time()
+        logger.info(f'Formula is {"satisfiable" if satisfiable else "unsatisfiable"} after {counter} steps in {end - start:.2f} seconds.')
+
+
+if __name__ == '__main__':
+    # Set up logging
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.INFO)
+    handler = logging.StreamHandler()
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+
+    counter = 0
+
+    # # Create a profiler
+    # profiler = cProfile.Profile()
+    # profiler.enable()
+
+    main()
+
+    # profiler.disable()
+    # s = io.StringIO()
+    # sort_by = 'cumulative'
+    # ps = pstats.Stats(profiler, stream=s).sort_stats(sort_by)
+    # ps.print_stats()
+    #
+    # # Output the profiling results to a file
+    # with open("results/profiling_results_dp_default.txt", "w") as f:
+    #     f.write(s.getvalue())
+    #
+    # print(s.getvalue())

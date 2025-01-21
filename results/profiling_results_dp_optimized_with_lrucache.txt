@@ -1,0 +1,94 @@
+         1174178067 function calls (1174063006 primitive calls) in 459.012 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000  459.011  459.011 /home/malchemis/PycharmProjects/POC-Python-DPLL/DavisPutnamCleanedOptimized.py:256(main)
+        1    0.006    0.006  459.011  459.011 /home/malchemis/PycharmProjects/POC-Python-DPLL/DavisPutnamCleanedOptimized.py:230(run_dp_on_files)
+ 115067/6   47.962    0.000  458.979   76.497 /home/malchemis/PycharmProjects/POC-Python-DPLL/DavisPutnamCleanedOptimized.py:127(dp)
+  1697465  181.694    0.000  181.694    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/DavisPutnamCleanedOptimized.py:50(remove_value_from_clauses)
+ 46361533   51.549    0.000  109.118    0.000 {built-in method builtins.any}
+ 44529866    8.870    0.000   55.849    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/DavisPutnamCleanedOptimized.py:147(<lambda>)
+ 44529866   14.362    0.000   46.979    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/DavisPutnamCleanedOptimized.py:25(is_tautology)
+477437475   33.898    0.000   33.898    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/DavisPutnamCleanedOptimized.py:165(<genexpr>)
+  1724824   32.702    0.000   32.702    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/DavisPutnamCleanedOptimized.py:62(remove_clauses_with_value)
+   491392   15.946    0.000   26.085    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/DavisPutnamCleanedOptimized.py:94(find_unit_clauses)
+    57550   12.213    0.000   18.858    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/DavisPutnamCleanedOptimized.py:74(find_pure_literals)
+    57548   11.307    0.000   18.506    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/DavisPutnamCleanedOptimized.py:106(find_best_literal)
+161949794   16.694    0.000   16.694    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/DavisPutnamCleanedOptimized.py:32(<genexpr>)
+120505292   13.230    0.000   13.230    0.000 {method 'get' of 'dict' objects}
+171115743    9.735    0.000    9.735    0.000 {built-in method builtins.len}
+ 44644933    3.287    0.000    3.287    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/DavisPutnamCleanedOptimized.py:151(<genexpr>)
+ 44644933    3.184    0.000    3.184    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/DavisPutnamCleanedOptimized.py:142(<genexpr>)
+  1724795    0.527    0.000    0.821    0.000 /usr/lib/python3.12/logging/__init__.py:1517(debug)
+    57548    0.614    0.000    0.614    0.000 {built-in method builtins.max}
+  6994523    0.507    0.000    0.507    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/DavisPutnamCleanedOptimized.py:179(<genexpr>)
+  1724807    0.293    0.000    0.294    0.000 /usr/lib/python3.12/logging/__init__.py:1790(isEnabledFor)
+  1898119    0.218    0.000    0.218    0.000 {built-in method builtins.next}
+  1898119    0.186    0.000    0.186    0.000 {built-in method builtins.iter}
+       12    0.001    0.000    0.014    0.001 /usr/lib/python3.12/logging/__init__.py:1529(info)
+       12    0.001    0.000    0.012    0.001 /usr/lib/python3.12/logging/__init__.py:1660(_log)
+        6    0.006    0.001    0.010    0.002 /home/malchemis/PycharmProjects/POC-Python-DPLL/DavisPutnamCleanedOptimized.py:208(read_cnf)
+       12    0.000    0.000    0.008    0.001 /usr/lib/python3.12/logging/__init__.py:1686(handle)
+       12    0.000    0.000    0.007    0.001 /usr/lib/python3.12/logging/__init__.py:1746(callHandlers)
+       12    0.000    0.000    0.007    0.001 /usr/lib/python3.12/logging/__init__.py:1011(handle)
+       12    0.000    0.000    0.005    0.000 /usr/lib/python3.12/logging/__init__.py:1148(emit)
+       12    0.000    0.000    0.003    0.000 /usr/lib/python3.12/logging/__init__.py:988(format)
+       12    0.000    0.000    0.003    0.000 /usr/lib/python3.12/logging/__init__.py:690(format)
+       12    0.000    0.000    0.003    0.000 /usr/lib/python3.12/logging/__init__.py:1645(makeRecord)
+       12    0.000    0.000    0.002    0.000 /usr/lib/python3.12/logging/__init__.py:298(__init__)
+       12    0.001    0.000    0.002    0.000 /usr/lib/python3.12/logging/__init__.py:622(formatTime)
+       24    0.002    0.000    0.002    0.000 {built-in method time.time}
+       24    0.000    0.000    0.002    0.000 /usr/lib/python3.12/logging/__init__.py:968(acquire)
+       26    0.002    0.000    0.002    0.000 {method 'acquire' of '_thread.RLock' objects}
+        6    0.002    0.000    0.002    0.000 {built-in method _io.open}
+       12    0.002    0.000    0.002    0.000 {method 'write' of '_io.TextIOWrapper' objects}
+       12    0.001    0.000    0.001    0.000 {built-in method time.localtime}
+       12    0.001    0.000    0.001    0.000 /usr/lib/python3.12/logging/__init__.py:1611(findCaller)
+       12    0.001    0.000    0.001    0.000 {built-in method posix.getpid}
+     6918    0.001    0.000    0.001    0.000 {method 'startswith' of 'str' objects}
+        1    0.001    0.001    0.001    0.001 {method 'disable' of '_lsprof.Profiler' objects}
+       12    0.000    0.000    0.001    0.000 /usr/lib/python3.12/logging/__init__.py:674(formatMessage)
+       12    0.000    0.000    0.001    0.000 /usr/lib/python3.12/logging/__init__.py:462(format)
+       12    0.001    0.000    0.001    0.000 /usr/lib/python3.12/logging/__init__.py:455(_format)
+     2270    0.001    0.000    0.001    0.000 {method 'split' of 'str' objects}
+       24    0.000    0.000    0.000    0.000 {built-in method _thread.get_ident}
+       36    0.000    0.000    0.000    0.000 /usr/lib/python3.12/logging/__init__.py:200(_is_internal_frame)
+       12    0.000    0.000    0.000    0.000 <frozen posixpath>:169(basename)
+     2270    0.000    0.000    0.000    0.000 {method 'add' of 'set' objects}
+       12    0.000    0.000    0.000    0.000 /usr/lib/python3.12/logging/__init__.py:668(usesTime)
+       36    0.000    0.000    0.000    0.000 <frozen posixpath>:52(normcase)
+       12    0.000    0.000    0.000    0.000 /usr/lib/python3.12/logging/__init__.py:447(usesTime)
+       60    0.000    0.000    0.000    0.000 {built-in method posix.fspath}
+       12    0.000    0.000    0.000    0.000 {method 'find' of 'str' objects}
+     2270    0.000    0.000    0.000    0.000 {method 'pop' of 'list' objects}
+     2270    0.000    0.000    0.000    0.000 {method 'strip' of 'str' objects}
+       24    0.000    0.000    0.000    0.000 /usr/lib/python3.12/logging/__init__.py:831(filter)
+       12    0.000    0.000    0.000    0.000 {built-in method time.strftime}
+       12    0.000    0.000    0.000    0.000 /usr/lib/python3.12/logging/__init__.py:1137(flush)
+       12    0.000    0.000    0.000    0.000 <frozen posixpath>:117(splitext)
+        6    0.000    0.000    0.000    0.000 {method '__exit__' of '_io._IOBase' objects}
+        8    0.000    0.000    0.000    0.000 <frozen codecs>:319(decode)
+       12    0.000    0.000    0.000    0.000 /usr/lib/python3.12/logging/__init__.py:170(<lambda>)
+       12    0.000    0.000    0.000    0.000 <frozen posixpath>:41(_get_sep)
+       12    0.000    0.000    0.000    0.000 <frozen genericpath>:133(_splitext)
+       36    0.000    0.000    0.000    0.000 {method 'rfind' of 'str' objects}
+       48    0.000    0.000    0.000    0.000 {built-in method builtins.isinstance}
+       12    0.000    0.000    0.000    0.000 /usr/lib/python3.12/logging/__init__.py:129(getLevelName)
+       24    0.000    0.000    0.000    0.000 {built-in method builtins.hasattr}
+       12    0.000    0.000    0.000    0.000 {built-in method sys._getframe}
+       24    0.000    0.000    0.000    0.000 /usr/lib/python3.12/logging/__init__.py:975(release)
+       12    0.000    0.000    0.000    0.000 /usr/lib/python3.12/threading.py:1180(name)
+        8    0.000    0.000    0.000    0.000 {built-in method _codecs.utf_8_decode}
+       12    0.000    0.000    0.000    0.000 {method 'flush' of '_io.TextIOWrapper' objects}
+       12    0.000    0.000    0.000    0.000 /usr/lib/python3.12/threading.py:1483(current_thread)
+        6    0.000    0.000    0.000    0.000 <frozen codecs>:309(__init__)
+       12    0.000    0.000    0.000    0.000 /usr/lib/python3.12/logging/__init__.py:383(getMessage)
+       26    0.000    0.000    0.000    0.000 {method 'release' of '_thread.RLock' objects}
+        2    0.000    0.000    0.000    0.000 /usr/lib/python3.12/logging/__init__.py:234(_acquireLock)
+        2    0.000    0.000    0.000    0.000 /usr/lib/python3.12/logging/__init__.py:243(_releaseLock)
+        6    0.000    0.000    0.000    0.000 <frozen codecs>:260(__init__)
+        2    0.000    0.000    0.000    0.000 /usr/lib/python3.12/logging/__init__.py:1776(getEffectiveLevel)
+        2    0.000    0.000    0.000    0.000 /usr/lib/python3.12/logging/__init__.py:1369(disable)
+
+

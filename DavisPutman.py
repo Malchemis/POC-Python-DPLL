@@ -68,7 +68,7 @@ def exist_in_clauses(value: int, clauses: list) -> bool:
     return False
 
 
-def single_lit(clauses: list) -> it:
+def single_lit(clauses: list) -> int:
     """retourne un literal qui apparait dans des clauses mais dont l'opposé n'apparait jamais"""
     for c in clauses:
         for i in c:
@@ -163,41 +163,41 @@ def DP(clauses: list) -> bool:
     """retourne vrai si le DPLL est fini"""
     global cpt
     cpt += 1
-    print("résolution de ", clauses)
+    print("résolution de ", clauses) if verbose else None
     clr1 = regle_1(clauses)
     if len(clr1) == 0:
-        print("succes")
+        print("succes") if verbose else None
         return True
     if [] in clr1:
-        print("echec")
+        print("echec") if verbose else None
         return False
     clr2 = regle_2(clr1)
     if len(clr2) == 0:
-        print("succes")
+        print("succes") if verbose else None
         return True
     if [] in clr2:
-        print("echec")
+        print("echec") if verbose else None
         return False
     if not formules_egales(clr1, clr2): return DP(clr2)
     clr3 = regle_3(clr2)
     if len(clr3) == 0:
-        print("succes")
+        print("succes") if verbose else None
         return True
     if [] in clr3:
-        print("echec")
+        print("echec") if verbose else None
         return False
     if not formules_egales(clr2, clr3): return DP(clr3)
     clr4 = regle_4(clr3)
     if len(clr4) == 0:
-        print("succes")
+        print("succes") if verbose else None
         return True
     if [] in clr4:
-        print("echec")
+        print("echec") if verbose else None
         return False
     if not formules_egales(clr3, clr4): return DP(clr4)
     clr51, clr52 = regle_5(clr4)
     mondes_unis = DP(clr51) or DP(clr52)
-    print("fin résolution de ", clauses)
+    print("fin résolution de ", clauses) if verbose else None
     return mondes_unis
 
 
@@ -250,19 +250,50 @@ def liste_vers_DIMACS(clauses):
     texte = f"p cnf {nb_vars} {nb_clauses}\n" + texte
     print(texte)
 
-# Exemple d'utilisation
-#fichier = 'chemin_vers_votre_fichier.cnf'
-#clauses = lire_cnf(fichier)
-#print(clauses)
+
+def main():
+    # We will use the Davis-Putnam algorithm to solve the following problems :
+    # The first 2 are only for testing (simple cases)
+    first_file = "uf50/uf50-01.cnf"
+    second_file = "uuf50/uuf50-01.cnf"
+    # The last 2 are for the final test (but very long on normal dp)
+    # third_file = "uf175-01.cnf"
+    # fourth_file = "uuf150-01.cnf"
+
+    # Reading the CNF files
+    first_clauses = lire_cnf(first_file)
+    second_clauses = lire_cnf(second_file)
+    # third_clauses = lire_cnf(third_file)
+    # fourth_clauses = lire_cnf(fourth_file)
+
+    # Testing the Davis-Putnam algorithm
+    import cProfile
+    import pstats
+    import io
+    from time import time
+    global verbose
+    global cpt
+
+    profiler = cProfile.Profile()
+    profiler.enable()
+
+    verbose = False
+    cpt = 0
+    start = time()
+    print(DP(first_clauses))
+    print("Time : ", time() - start, "for file ", first_file, "with ", cpt, "calls")
+    cpt = 0
+    start = time()
+    print(DP(second_clauses))
+    print("Time : ", time() - start, "for file ", second_file, "with ", cpt, "calls")
+
+    profiler.disable()
+    s = io.StringIO()
+    sortby = 'cumulative'
+    ps = pstats.Stats(profiler, stream=s).sort_stats(sortby)
+    ps.print_stats()
+    print(s.getvalue())
 
 
-# p=1; q=2; r=3; s=4; t=5
-# TDexo2 = [[p, q], [-p, r], [-q, r, s], [-r], [-s], [-t] ]
-#nonsatisfiable
-
-# a = 1; b = 2; c = 3; d = 4; p = 5
-# TDexo3 = [[a, b], [-a, c], [-b, d], [-c, p], [-d, p], [-p, -c]]
-#satisfiable
-
-#TDexo4 = [[1, -2, 3, -4, -5, -6], [2, 3], [2, 3, 4, 7, 6], [2, -4, 7, -5], [2, -3, 8, -6], [2, -4, 5, -8], [-2, -3], [-2, -3, -4], [-2, 3, 4], [-2, -4, 7], [-2, -7, 5], [-8, -6], [8, 6], [-8, 6]]
-#satisfiable
+if __name__ == "__main__":
+    main()

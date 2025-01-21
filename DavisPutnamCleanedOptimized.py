@@ -1,10 +1,10 @@
 import logging
 import time
 from typing import List, Set, Dict, FrozenSet
-from functools import lru_cache
-import cProfile
-import pstats
-import io
+# from functools import lru_cache
+# import cProfile
+# import pstats
+# import io
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -21,7 +21,7 @@ Literal = int
 Clause = FrozenSet[Literal]
 CNF = Set[Clause]
 
-
+# Use any and list comprehension to check if a clause is a tautology
 def is_tautology(clause: Clause) -> bool:
     """
     Check if a clause is a tautology (contains a literal and its negation).
@@ -32,7 +32,7 @@ def is_tautology(clause: Clause) -> bool:
     return any(-lit in clause for lit in clause)
 
 
-# NOT USED, WE USE FILTERING ON THE FROZENSET INSTEAD
+# NOT USED, WE USE FILTERING ON THE FROZENSET INSTEAD (directly in the dp function)
 def first_rule(clauses: CNF) -> CNF:
     """
     Rule 1: Remove tautologies from the CNF.
@@ -46,6 +46,7 @@ def first_rule(clauses: CNF) -> CNF:
     return filtered_clauses
 
 
+# Take advantage of the set operations to remove the clauses with the unit literals
 def remove_value_from_clauses(clauses: CNF, value: Literal) -> CNF:
     """
     Remove a specific literal from all clauses.
@@ -57,6 +58,7 @@ def remove_value_from_clauses(clauses: CNF, value: Literal) -> CNF:
     return {clause - {value} for clause in clauses}
 
 
+# Use set comprehension to filter out the clauses containing the value
 def remove_clauses_with_value(clauses: CNF, value: Literal) -> CNF:
     """
     Remove all clauses that contain a specific literal.
@@ -68,6 +70,7 @@ def remove_clauses_with_value(clauses: CNF, value: Literal) -> CNF:
     return {clause for clause in clauses if value not in clause}
 
 
+# We use a dictionary to count the occurrences of each literal
 def find_pure_literals(clauses: CNF) -> Set[Literal]:
     """
     Find all pure literals in the CNF (literals that appear with only one polarity).
@@ -75,15 +78,19 @@ def find_pure_literals(clauses: CNF) -> Set[Literal]:
     :param clauses: The current CNF.
     :return: A set of pure literals.
     """
+    # Use a dictionary to count the occurrences of each literal
     literal_counts: Dict[Literal, int] = {}
     for clause in clauses:
         for literal in clause:
             literal_counts[literal] = literal_counts.get(literal, 0) + 1
 
+    # Use a set comprehension to find the pure literals
     pure_literals = {lit for lit in literal_counts if -lit not in literal_counts}
     return pure_literals
 
 
+# Here we take advantage of Iterable unpacking to get the first element of the clause
+# We do this because we cannot index a set
 def find_unit_clauses(clauses: CNF) -> Set[Literal]:
     """
     Find all unit literals in the CNF (literals in unit clauses).
@@ -94,6 +101,8 @@ def find_unit_clauses(clauses: CNF) -> Set[Literal]:
     return {next(iter(clause)) for clause in clauses if len(clause) == 1}
 
 
+# To fasten the search and pick the best literal to branch on,
+# we use a dictionary to count the occurrences of each literal
 def find_best_literal(clauses: CNF) -> Literal:
     """
     Heuristic to choose the best literal to branch on.
@@ -107,6 +116,7 @@ def find_best_literal(clauses: CNF) -> Literal:
         for literal in clause:
             literal_frequency[literal] = literal_frequency.get(literal, 0) + 1
 
+    # If there are no literals, return 0
     if not literal_frequency:
         return 0
 
@@ -114,8 +124,7 @@ def find_best_literal(clauses: CNF) -> Literal:
     best_literal = max(literal_frequency, key=literal_frequency.get)
     return best_literal
 
-
-@lru_cache(maxsize=None)
+# @lru_cache(maxsize=None)
 def dp(clauses: FrozenSet[Clause]) -> bool:
     """
     DP algorithm to determine if the clauses are satisfiable.
@@ -130,7 +139,7 @@ def dp(clauses: FrozenSet[Clause]) -> bool:
         logger.debug("Success: All clauses satisfied.")
         return True
 
-    if any(len(clause) == 0 for clause in clauses):
+    if any(not clause for clause in clauses):
         logger.debug("Failure: Encountered an empty clause.")
         return False
 
@@ -139,7 +148,7 @@ def dp(clauses: FrozenSet[Clause]) -> bool:
     if not clauses:
         logger.debug("Success: All clauses satisfied after Rule 1.")
         return True
-    if any(len(clause) == 0 for clause in clauses):
+    if any(not clause for clause in clauses):
         logger.debug("Failure: Encountered an empty clause after Rule 1.")
         return False
 
@@ -153,7 +162,7 @@ def dp(clauses: FrozenSet[Clause]) -> bool:
             if not clauses:
                 logger.debug("Success: All clauses satisfied after Rule 2.")
                 return True
-            if any(len(clause) == 0 for clause in clauses):
+            if any(not clause for clause in clauses):
                 logger.debug("Failure: Encountered an empty clause after Rule 2.")
                 return False
         unit_literals = find_unit_clauses(clauses)
@@ -167,7 +176,7 @@ def dp(clauses: FrozenSet[Clause]) -> bool:
         if not clauses:
             logger.debug("Success: All clauses satisfied after Rule 3.")
             return True
-        if any(len(clause) == 0 for clause in clauses):
+        if any(not clause for clause in clauses):
             logger.debug("Failure: Encountered an empty clause after Rule 3.")
             return False
 
@@ -218,23 +227,6 @@ def read_cnf(file_path: str) -> FrozenSet[Clause]:
     return frozenset(clauses)
 
 
-def list_to_dimacs(clauses: List[List[Literal]]) -> str:
-    """
-    Convert a list of clauses to DIMACS CNF format.
-
-    :param clauses: List of clauses.
-    :return: A string in DIMACS CNF format.
-    """
-    num_clauses = len(clauses)
-    all_literals = {lit for clause in clauses for lit in clause}
-    num_vars = max(abs(lit) for lit in all_literals) if all_literals else 0
-    dimacs = f"p cnf {num_vars} {num_clauses}\n"
-    for clause in clauses:
-        dimacs += ' '.join(map(str, clause)) + " 0\n"
-    logger.info(f'DIMACS CNF:\n{dimacs}')
-    return dimacs
-
-
 def run_dp_on_files(cnf_files: List[str]) -> None:
     """
     Run the DP algorithm on a list of CNF files.
@@ -266,38 +258,40 @@ def main():
     sat_folder = 'uf50'
     non_sat_folder = 'uuf50'
 
+    large_problems = True
+
     # Example usage with multiple CNF files
     cnf_files = [
         f'{sat_folder}/uf50-01.cnf',
         f'{non_sat_folder}/uuf50-01.cnf',
         f'{sat_folder}/uf50-010.cnf',
         f'{non_sat_folder}/uuf50-010.cnf',
-        'uf175-01.cnf',
-        'uuf150-01.cnf'
     ]
+
+    if large_problems:
+        cnf_files += 'uf175-01.cnf', 'uuf150-01.cnf'
 
     run_dp_on_files(cnf_files)
 
 
 if __name__ == '__main__':
-    # Create a profiler
-    profiler = cProfile.Profile()
-    profiler.enable()
+    # # Create a profiler
+    # profiler = cProfile.Profile()
+    # profiler.enable()
 
     counter = 0
     main()
 
-    profiler.disable()
-
-    # Create a stream to capture the profiling data
-    s = io.StringIO()
-    sortby = 'cumulative'
-    ps = pstats.Stats(profiler, stream=s).sort_stats(sortby)
-    ps.print_stats()
-
-    # Output the profiling results to a file
-    with open("profiling_results.txt", "w") as f:
-        f.write(s.getvalue())
-
-    print(s.getvalue())
-
+    # profiler.disable()
+    #
+    # # Create a stream to capture the profiling data
+    # s = io.StringIO()
+    # sort_by = 'cumulative'
+    # ps = pstats.Stats(profiler, stream=s).sort_stats(sort_by)
+    # ps.print_stats()
+    #
+    # # Output the profiling results to a file
+    # with open("results/profiling_results_dp_optimized_with_lrucache.txt", "w") as f:
+    #     f.write(s.getvalue())
+    #
+    # print(s.getvalue())

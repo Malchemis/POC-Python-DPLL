@@ -1,0 +1,12 @@
+/home/malchemis/PycharmProjects/POC-Python-DPLL/.venv/bin/python /home/malchemis/PycharmProjects/POC-Python-DPLL/DavisPutnamDefaultCleaned.py
+2025-01-21 23:48:43,300 - __main__ - INFO - Starting DP with clauses from uf50/uf50-01.cnf
+2025-01-21 23:48:43,732 - __main__ - INFO - Success: All clauses satisfied after Rule 2.
+2025-01-21 23:48:43,733 - __main__ - INFO - Formula is satisfiable after 456 steps in 0.43 seconds.
+2025-01-21 23:48:43,733 - __main__ - INFO - Starting DP with clauses from uuf50/uuf50-01.cnf
+2025-01-21 23:48:46,649 - __main__ - INFO - Formula is unsatisfiable after 3090 steps in 2.92 seconds.
+2025-01-21 23:48:46,649 - __main__ - INFO - Starting DP with clauses from uf50/uf50-010.cnf
+2025-01-21 23:48:46,932 - __main__ - INFO - Success: All clauses satisfied after Rule 3.
+2025-01-21 23:48:46,933 - __main__ - INFO - Formula is satisfiable after 364 steps in 0.28 seconds.
+2025-01-21 23:48:46,933 - __main__ - INFO - Starting DP with clauses from uuf50/uuf50-010.cnf
+2025-01-21 23:48:49,629 - __main__ - INFO - Formula is unsatisfiable after 2850 steps in 2.70 seconds.
+2025-01-21 23:48:49,629 - __main__ - INFO - Starting DP with clauses from uf175-01.cnf
