@@ -1,6 +1,7 @@
 import logging
 import time
 from typing import List, Set, Dict, FrozenSet
+
 # from functools import lru_cache
 # import cProfile
 # import pstats
@@ -20,6 +21,7 @@ logger.addHandler(handler)
 Literal = int
 Clause = FrozenSet[Literal]
 CNF = Set[Clause]
+
 
 # Use any and list comprehension to check if a clause is a tautology
 def is_tautology(clause: Clause) -> bool:
@@ -120,39 +122,31 @@ def find_best_literal(clauses: CNF) -> Literal:
     if not literal_frequency:
         return 0
 
+    # Filter on literals l with both polarities
+    # we want to branch on world1 where l is True and world2 where l is False
+    for literal in list(literal_frequency.keys()):
+        if -literal not in literal_frequency:
+            del literal_frequency[literal]
+
     # Choose the literal with the highest frequency
     best_literal = max(literal_frequency, key=literal_frequency.get)
     return best_literal
 
+
 # @lru_cache(maxsize=None)
-def dp(clauses: FrozenSet[Clause]) -> bool:
+def dp(clauses: CNF) -> bool:
     """
     DP algorithm to determine if the clauses are satisfiable.
+    For the order of the rules and the branching, we follow the DP pseudocode
+    at https://en.wikipedia.org/wiki/Davis%E2%80%93Putnam_algorithm
 
-    :param clauses: A frozenset representing the current CNF.
+    :param clauses: A set representing the current CNF.
     :return: True if satisfiable, False otherwise.
     """
     global counter
     counter += 1
 
-    if not clauses: # Empty CNF is trivially satisfiable
-        logger.debug("Success: All clauses satisfied.")
-        return True
-
-    if any(not clause for clause in clauses): # Empty clause is unsatisfiable
-        logger.debug("Failure: Encountered an empty clause.")
-        return False
-
-    # Apply Rule 1: Remove tautologies
-    # clauses = set(filter(lambda c: not is_tautology(c), clauses))
-    # if not clauses:
-    #     logger.debug("Success: All clauses satisfied after Rule 1.")
-    #     return True
-    # if any(not clause for clause in clauses):
-    #     logger.debug("Failure: Encountered an empty clause after Rule 1.")
-    #     return False
-
-    # Apply Rule 2: Unit Clause Elimination
+    # Apply Rule: Unit Clause Elimination // Unit Propagation
     unit_literals = find_unit_clauses(clauses)
     while unit_literals:
         for unit in unit_literals:
@@ -167,19 +161,22 @@ def dp(clauses: FrozenSet[Clause]) -> bool:
                 return False
         unit_literals = find_unit_clauses(clauses)
 
-    # Apply Rule 3: Pure Literal Elimination
+    # Apply Rule: Pure Literal Elimination
     pure_literals = find_pure_literals(clauses)
     if pure_literals:
         for pure in pure_literals:
             logger.debug(f"Rule 3 activated: Pure literal {pure}.")
             clauses = remove_clauses_with_value(clauses, pure)
-        if not clauses:
-            logger.debug("Success: All clauses satisfied after Rule 3.")
-            return True
-        if any(not clause for clause in clauses):
-            logger.debug("Failure: Encountered an empty clause after Rule 3.")
-            return False
 
+    # Stopping conditions
+    if not clauses:
+        logger.debug("Success: All clauses satisfied after Rule 3.")
+        return True
+    if any(not clause for clause in clauses):
+        logger.debug("Failure: Encountered an empty clause after Rule 3.")
+        return False
+
+    # Apply Davis Putnam Branching
     # Choose the best literal to branch on
     chosen_literal = find_best_literal(clauses)
     if chosen_literal == 0:
@@ -197,20 +194,15 @@ def dp(clauses: FrozenSet[Clause]) -> bool:
     new_clauses2 = remove_value_from_clauses(new_clauses2, chosen_literal)
 
     # Recursive DP calls
-    result1 = dp(frozenset(new_clauses1))
-    if result1:
-        return True
-
-    result2 = dp(frozenset(new_clauses2))
-    return result2
+    return dp(new_clauses1) or dp(new_clauses2)
 
 
-def read_cnf(file_path: str) -> FrozenSet[Clause]:
+def read_cnf(file_path: str) -> CNF:
     """
     Read a CNF file in DIMACS format and return a set of clauses.
 
     :param file_path: Path to the CNF file.
-    :return: A frozenset of frozensets, where each inner frozenset represents a clause.
+    :return: A set of frozensets, where each inner frozenset represents a clause.
     """
     clauses: Set[Clause] = set()
     with open(file_path, 'r') as file:
@@ -224,7 +216,7 @@ def read_cnf(file_path: str) -> FrozenSet[Clause]:
                 literals.pop()
             if literals:
                 clauses.add(frozenset(literals))
-    return frozenset(clauses)
+    return set(clauses)
 
 
 def run_dp_on_files(cnf_files: List[str]) -> None:
