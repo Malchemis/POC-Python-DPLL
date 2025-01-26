@@ -1,21 +1,12 @@
-import logging
-import time
-from typing import List, Set, Dict, FrozenSet
+import logging          # Instead of prints, for better control and readability of the output
+from glob import glob   # To list all files in a directory
+import time             # To measure the time taken to solve the problem
+from typing import List, Set, Dict, FrozenSet, Callable  # Type hints for better readability and error checking
 
-# from functools import lru_cache
-# import cProfile
-# import pstats
-# import io
-
-# Configure logging
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-handler = logging.StreamHandler()
-formatter = logging.Formatter(
-    '%(asctime)s - %(levelname)s - %(message)s'
-)
-handler.setFormatter(formatter)
-logger.addHandler(handler)
+# To profile (optional)
+import cProfile
+import pstats
+import io
 
 # Type aliases for clarity
 Literal = int
@@ -34,7 +25,6 @@ def is_tautology(clause: Clause) -> bool:
     return any(-lit in clause for lit in clause)
 
 
-# NOT USED, WE USE FILTERING ON THE FROZENSET INSTEAD (directly in the dp function)
 def first_rule(clauses: CNF) -> CNF:
     """
     Rule 1: Remove tautologies from the CNF.
@@ -42,10 +32,7 @@ def first_rule(clauses: CNF) -> CNF:
     :param clauses: The current CNF.
     :return: CNF without tautological clauses.
     """
-    filtered_clauses = {clause for clause in clauses if not is_tautology(clause)}
-    if filtered_clauses != clauses:
-        logger.debug("Rule 1 activated: Tautologies removed.")
-    return filtered_clauses
+    return set(filter(lambda c: not is_tautology(c), clauses))
 
 
 # Take advantage of the set operations to remove the clauses with the unit literals
@@ -80,10 +67,11 @@ def find_pure_literals(clauses: CNF) -> Set[Literal]:
     :param clauses: The current CNF.
     :return: A set of pure literals.
     """
-    # Use a dictionary to count the occurrences of each literal
+    # Count the occurrences of each literal
     literal_counts: Dict[Literal, int] = {}
     for clause in clauses:
         for literal in clause:
+            # Get value or default to 0, then increment
             literal_counts[literal] = literal_counts.get(literal, 0) + 1
 
     # Use a set comprehension to find the pure literals
@@ -101,6 +89,19 @@ def find_unit_clauses(clauses: CNF) -> Set[Literal]:
     :return: A set of unit literals.
     """
     return {next(iter(clause)) for clause in clauses if len(clause) == 1}
+
+
+def fourth_rule(clauses: CNF) -> CNF:
+    """
+    Rule 4: Remove clauses that are supersets of other clauses.
+    That is, if there is any clause d ⊂ c, we remove c.
+
+    :param clauses: The current CNF.
+    :return: CNF without clauses that are supersets of other clauses.
+    """
+    # d < c is equivalent to d.issubset(c) and d != c
+    # d is not c is used to avoid unnecessary comparisons
+    return {c for c in clauses if not any(d < c for d in clauses if d is not c)}
 
 
 # To fasten the search and pick the best literal to branch on,
@@ -133,7 +134,11 @@ def find_best_literal(clauses: CNF) -> Literal:
     return best_literal
 
 
-# @lru_cache(maxsize=None)
+def formulas_eq(f1: CNF, f2: CNF) -> bool:
+    """Check if two CNFs (set of frozenset literals) are identical."""
+    return f1 == f2
+
+
 def dp(clauses: CNF) -> bool:
     """
     DP algorithm to determine if the clauses are satisfiable.
@@ -146,62 +151,78 @@ def dp(clauses: CNF) -> bool:
     global counter
     counter += 1
 
+    # Apply First Rule: Remove tautologies
+    f_before = clauses
+    clauses = first_rule(clauses)
+
+    # Stopping conditions
     if not clauses:
         logger.debug("Success: All clauses satisfied.")
         return True
-
     if any(not clause for clause in clauses):
         logger.debug("Failure: Encountered an empty clause.")
         return False
+    if not formulas_eq(f_before, clauses):
+        return dp(clauses)
 
-    # Apply Rule: Unit Clause Elimination // Unit Propagation
+    # Apply Second Rule: Unit Clause Elimination // Unit Propagation
+    f_before = clauses
     unit_literals = find_unit_clauses(clauses)
     while unit_literals:
         for unit in unit_literals:
             logger.debug(f"Rule 2 activated: Unit literal {unit}.")
             clauses = remove_clauses_with_value(clauses, unit)
             clauses = remove_value_from_clauses(clauses, -unit)
-            if not clauses:
-                logger.debug("Success: All clauses satisfied after Rule 2.")
-                return True
-            if any(not clause for clause in clauses):
-                logger.debug("Failure: Encountered an empty clause after Rule 2.")
-                return False
         unit_literals = find_unit_clauses(clauses)
 
-    # Apply Rule: Remove tautologies
-    clauses = set(filter(lambda c: not is_tautology(c), clauses))
+    # Stopping conditions
     if not clauses:
-        logger.debug("Success: All clauses satisfied after Rule 1.")
+        logger.debug("Success: All clauses satisfied.")
         return True
     if any(not clause for clause in clauses):
-        logger.debug("Failure: Encountered an empty clause after Rule 1.")
+        logger.debug("Failure: Encountered an empty clause.")
         return False
+    if not formulas_eq(f_before, clauses):
+        return dp(clauses)
 
-    # Apply Rule: Pure Literal Elimination
+    # Apply Third Rule: Pure Literal Elimination
+    f_before = clauses
     pure_literals = find_pure_literals(clauses)
     if pure_literals:
         for pure in pure_literals:
             logger.debug(f"Rule 3 activated: Pure literal {pure}.")
             clauses = remove_clauses_with_value(clauses, pure)
+        # Stopping conditions
+        if not clauses:
+            logger.debug("Success: All clauses satisfied after Rule 3.")
+            return True
+        if any(not clause for clause in clauses):
+            logger.debug("Failure: Encountered an empty clause after Rule 3.")
+            return False
+        if not formulas_eq(f_before, clauses):
+            return dp(clauses)
 
+    # Apply 4th Rule: If a clause is a superset of another clause, remove the superset clause.
+    f_before = clauses
+    clauses = fourth_rule(clauses)
     # Stopping conditions
     if not clauses:
-        logger.debug("Success: All clauses satisfied after Rule 3.")
+        logger.debug("Success: All clauses satisfied.")
         return True
     if any(not clause for clause in clauses):
-        logger.debug("Failure: Encountered an empty clause after Rule 3.")
+        logger.debug("Failure: Encountered an empty clause.")
         return False
+    if not formulas_eq(f_before, clauses):
+        return dp(clauses)
 
-    # Apply Davis Putnam Branching
-    # Choose the best literal to branch on
+
+    # Apply Davis Putnam Branching : If lit and not(lit) are in the clauses, we can branch
     chosen_literal = find_best_literal(clauses)
     if chosen_literal == 0:
         # No literals left, check if all clauses are satisfied
         return True
 
     logger.debug(f"Branching on literal {chosen_literal}.")
-
     # Branch 1: Assume chosen_literal is True
     new_clauses1 = remove_clauses_with_value(clauses, chosen_literal)
     new_clauses1 = remove_value_from_clauses(new_clauses1, -chosen_literal)
@@ -236,10 +257,11 @@ def read_cnf(file_path: str) -> CNF:
     return set(clauses)
 
 
-def run_dp_on_files(cnf_files: List[str]) -> None:
+def run_dp_on_files(cnf_files: List[str], algorithm: Callable = dp) -> None:
     """
     Run the DP algorithm on a list of CNF files.
 
+    :param algorithm: The algorithm to use (default is dp).
     :param cnf_files: List of file paths to CNF files.
     """
     global counter
@@ -249,7 +271,7 @@ def run_dp_on_files(cnf_files: List[str]) -> None:
             file_clauses = read_cnf(cnf_file)
             logger.info(f'Starting DP with clauses from {cnf_file}')
             start_time = time.time()
-            satisfiable = dp(file_clauses)
+            satisfiable = algorithm(file_clauses)
             end_time = time.time()
             logger.info(
                 f'Formula is {"satisfiable" if satisfiable else "unsatisfiable"} '
@@ -270,12 +292,8 @@ def main():
     large_problems = True
 
     # Example usage with multiple CNF files
-    cnf_files = [
-        f'{sat_folder}/uf50-01.cnf',
-        f'{non_sat_folder}/uuf50-01.cnf',
-        f'{sat_folder}/uf50-010.cnf',
-        f'{non_sat_folder}/uuf50-010.cnf',
-    ]
+    cnf_files = glob(f'{sat_folder}/*.cnf')
+    cnf_files += glob(f'{non_sat_folder}/*.cnf')
 
     if large_problems:
         cnf_files += 'uf175-01.cnf', 'uuf150-01.cnf'
@@ -284,23 +302,38 @@ def main():
 
 
 if __name__ == '__main__':
-    # # Create a profiler
-    # profiler = cProfile.Profile()
-    # profiler.enable()
+    # Set to True to enable profiling
+    PROFILE = False
+    profiler = cProfile.Profile()
+
+    # Configure logging
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.INFO)
+    handler = logging.StreamHandler()
+    formatter = logging.Formatter(
+        '%(asctime)s - %(levelname)s - %(message)s'
+    )
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+
+    # Create a profiler
+    if PROFILE:
+        profiler.enable()
 
     counter = 0
     main()
 
-    # profiler.disable()
-    #
-    # # Create a stream to capture the profiling data
-    # s = io.StringIO()
-    # sort_by = 'cumulative'
-    # ps = pstats.Stats(profiler, stream=s).sort_stats(sort_by)
-    # ps.print_stats()
-    #
-    # # Output the profiling results to a file
-    # with open("results/profiling_results_dp_optimized_with_lrucache.txt", "w") as f:
-    #     f.write(s.getvalue())
-    #
-    # print(s.getvalue())
+    if PROFILE:
+        profiler.disable()
+
+        # Create a stream to capture the profiling data
+        s = io.StringIO()
+        sort_by = 'cumulative'
+        ps = pstats.Stats(profiler, stream=s).sort_stats(sort_by)
+        ps.print_stats()
+
+        # Output the profiling results to a file
+        with open("results/profiling_results_dp_optimized_with_lrucache.txt", "w") as f:
+            f.write(s.getvalue())
+
+        print(s.getvalue())
