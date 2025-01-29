@@ -1,0 +1,46 @@
+/home/malchemis/development/pypy3.10-v7.3.17-linux64/bin/pypy main.py
+2025-01-29 13:17:25,623 - INFO - Starting DP with clauses from uf50/uf50-01.cnf
+2025-01-29 13:17:25,649 - INFO - Formula is satisfiable in 0.027 seconds. DP called 49 times.
+2025-01-29 13:17:25,651 - INFO - Starting DP with clauses from uf50/uf50-010.cnf
+2025-01-29 13:17:25,684 - INFO - Formula is satisfiable in 0.032 seconds. DP called 114 times.
+2025-01-29 13:17:25,685 - INFO - Starting DP with clauses from uf50/uf50-02.cnf
+2025-01-29 13:17:25,708 - INFO - Formula is satisfiable in 0.023 seconds. DP called 104 times.
+2025-01-29 13:17:25,710 - INFO - Starting DP with clauses from uf50/uf50-03.cnf
+2025-01-29 13:17:25,722 - INFO - Formula is satisfiable in 0.012 seconds. DP called 77 times.
+2025-01-29 13:17:25,723 - INFO - Starting DP with clauses from uf50/uf50-04.cnf
+2025-01-29 13:17:25,725 - INFO - Formula is satisfiable in 0.002 seconds. DP called 11 times.
+2025-01-29 13:17:25,728 - INFO - Starting DP with clauses from uf50/uf50-05.cnf
+2025-01-29 13:17:25,730 - INFO - Formula is satisfiable in 0.002 seconds. DP called 15 times.
+2025-01-29 13:17:25,731 - INFO - Starting DP with clauses from uf50/uf50-06.cnf
+2025-01-29 13:17:25,756 - INFO - Formula is satisfiable in 0.025 seconds. DP called 114 times.
+2025-01-29 13:17:25,756 - INFO - Starting DP with clauses from uf50/uf50-07.cnf
+2025-01-29 13:17:25,758 - INFO - Formula is satisfiable in 0.002 seconds. DP called 13 times.
+2025-01-29 13:17:25,759 - INFO - Starting DP with clauses from uf50/uf50-08.cnf
+2025-01-29 13:17:25,760 - INFO - Formula is satisfiable in 0.001 seconds. DP called 8 times.
+2025-01-29 13:17:25,760 - INFO - Starting DP with clauses from uf50/uf50-09.cnf
+2025-01-29 13:17:25,762 - INFO - Formula is satisfiable in 0.002 seconds. DP called 12 times.
+2025-01-29 13:17:25,762 - INFO - Starting DP with clauses from uuf50/uuf50-01.cnf
+2025-01-29 13:17:25,793 - INFO - Formula is unsatisfiable in 0.030 seconds. DP called 153 times.
+2025-01-29 13:17:25,793 - INFO - Starting DP with clauses from uuf50/uuf50-010.cnf
+2025-01-29 13:17:25,811 - INFO - Formula is unsatisfiable in 0.018 seconds. DP called 99 times.
+2025-01-29 13:17:25,811 - INFO - Starting DP with clauses from uuf50/uuf50-02.cnf
+2025-01-29 13:17:25,826 - INFO - Formula is unsatisfiable in 0.014 seconds. DP called 87 times.
+2025-01-29 13:17:25,826 - INFO - Starting DP with clauses from uuf50/uuf50-03.cnf
+2025-01-29 13:17:25,839 - INFO - Formula is unsatisfiable in 0.012 seconds. DP called 73 times.
+2025-01-29 13:17:25,839 - INFO - Starting DP with clauses from uuf50/uuf50-04.cnf
+2025-01-29 13:17:25,865 - INFO - Formula is unsatisfiable in 0.026 seconds. DP called 159 times.
+2025-01-29 13:17:25,866 - INFO - Starting DP with clauses from uuf50/uuf50-05.cnf
+2025-01-29 13:17:25,892 - INFO - Formula is unsatisfiable in 0.026 seconds. DP called 173 times.
+2025-01-29 13:17:25,892 - INFO - Starting DP with clauses from uuf50/uuf50-06.cnf
+2025-01-29 13:17:25,922 - INFO - Formula is unsatisfiable in 0.030 seconds. DP called 193 times.
+2025-01-29 13:17:25,923 - INFO - Starting DP with clauses from uuf50/uuf50-07.cnf
+2025-01-29 13:17:25,947 - INFO - Formula is unsatisfiable in 0.024 seconds. DP called 161 times.
+2025-01-29 13:17:25,947 - INFO - Starting DP with clauses from uuf50/uuf50-08.cnf
+2025-01-29 13:17:25,975 - INFO - Formula is unsatisfiable in 0.028 seconds. DP called 109 times.
+2025-01-29 13:17:25,976 - INFO - Starting DP with clauses from uuf50/uuf50-09.cnf
+2025-01-29 13:17:25,993 - INFO - Formula is unsatisfiable in 0.017 seconds. DP called 105 times.
+2025-01-29 13:17:25,994 - INFO - Starting DP with clauses from uf175-01.cnf
+2025-01-29 13:18:15,035 - INFO - Formula is satisfiable in 49.041 seconds. DP called 44685 times.
+2025-01-29 13:18:15,035 - INFO - Starting DP with clauses from uuf150-01.cnf
+2025-01-29 13:19:29,419 - INFO - Formula is unsatisfiable in 74.384 seconds. DP called 80179 times.
+2025-01-29 13:19:29,419 - INFO - Total time taken: 123.779 seconds

@@ -6,27 +6,6 @@ Literal = int
 Clause = FrozenSet[Literal]
 CNF = Set[Clause]
 
-# Use any and list comprehension to check if a clause is a tautology
-def is_tautology(clause: Clause) -> bool:
-    """
-    Check if a clause is a tautology (contains a literal and its negation).
-
-    :param clause: A frozenset representing a clause.
-    :return: True if the clause is a tautology, False otherwise.
-    """
-    return any(-lit in clause for lit in clause)
-
-
-# Use filter and lambda to remove tautological clauses
-def first_rule(clauses: CNF) -> CNF:
-    """
-    Rule 1: Remove tautologies from the CNF.
-
-    :param clauses: The current CNF.
-    :return: CNF without tautological clauses.
-    """
-    return set(filter(lambda c: not is_tautology(c), clauses))
-
 
 def read_cnf(file_path: str) -> CNF:
     """
@@ -60,22 +39,21 @@ def run_dp_on_files(cnf_files: List[str], algorithm: Callable, logger=None) -> f
     """
     sum_times = 0.0
     for cnf_file in cnf_files:
+        counter = [0]
+        file_clauses = None
         try:
-            counter = [0]
             file_clauses = read_cnf(cnf_file)
-            logger.info(f'Starting DP with clauses from {cnf_file}')
-            start_time = time.time()
-            file_clauses = first_rule(file_clauses) # We remove tautologies only once
-            satisfiable = algorithm(file_clauses, counter=counter, logger=logger)
-            end_time = time.time()
-            logger.info(
-                f'Formula is {"satisfiable" if satisfiable else "unsatisfiable"} '
-                f'in {end_time - start_time:.3f} seconds.'
-                f' DP called {counter[0]} times.'
-            )
-            sum_times += end_time - start_time
         except FileNotFoundError:
             logger.error(f'File not found: {cnf_file}')
-        except Exception as e:
-            logger.error(f'An error occurred while processing {cnf_file}: {e}')
+
+        logger.info(f'Starting DP with clauses from {cnf_file}')
+        start_time = time.time()
+        satisfiable = algorithm(file_clauses, counter=counter, logger=logger)
+        end_time = time.time()
+        logger.info(
+            f'Formula is {"satisfiable" if satisfiable else "unsatisfiable"} '
+            f'in {end_time - start_time:.3f} seconds.'
+            f' DP called {counter[0]} times.'
+        )
+        sum_times += end_time - start_time
     return sum_times

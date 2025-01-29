@@ -1,5 +1,27 @@
 from typing import Set, Dict  # Type hints for better readability and error checking
-from utils import Literal, CNF  # Import the custom types
+from utils import Literal, Clause, CNF  # Import the custom types
+
+
+# Use any and list comprehension to check if a clause is a tautology
+def is_tautology(clause: Clause) -> bool:
+    """
+    Check if a clause is a tautology (contains a literal and its negation).
+
+    :param clause: A frozenset representing a clause.
+    :return: True if the clause is a tautology, False otherwise.
+    """
+    return any(-lit in clause for lit in clause)
+
+
+# Use filter and lambda to remove tautological clauses
+def first_rule(clauses: CNF) -> CNF:
+    """
+    Rule 1: Remove tautologies from the CNF.
+
+    :param clauses: The current CNF.
+    :return: CNF without tautological clauses.
+    """
+    return set(filter(lambda c: not is_tautology(c), clauses))
 
 
 # Take advantage of the set operations to remove the clauses with the unit literals
@@ -122,6 +144,10 @@ def find_best_literal(clauses: CNF) -> Literal:
         if -literal not in literal_frequency:
             del literal_frequency[literal]
 
+    # If there are no literals, return 0
+    if not literal_frequency:
+        return 0
+
     # Choose the literal with the highest frequency
     best_literal = max(literal_frequency, key=literal_frequency.get)
     return best_literal
@@ -134,7 +160,7 @@ def dp(clauses: CNF, counter, logger) -> bool:
     at https://en.wikipedia.org/wiki/Davis%E2%80%93Putnam_algorithm
 
     :param clauses: A set representing the current CNF.
-    :param counter: A list container of a counter to keep track of the number of recursive calls.
+    :param counter: A list container of a counter to keep track of the recursive calls.
     :param logger: The logger object to log messages.
     :return: True if satisfiable, False otherwise.
     """
@@ -148,8 +174,10 @@ def dp(clauses: CNF, counter, logger) -> bool:
         logger.debug("Failure: Encountered an empty clause.")
         return False
 
+    # Apply the First Rule: Remove Tautologies
+    clauses = first_rule(clauses)
 
-    # Apply Second Rule: Unit Clause Elimination // Unit Propagation
+    # Apply the Second Rule: Unit Clause Elimination // Unit Propagation
     unit_literals = find_unit_clauses(clauses)
     while unit_literals:
         for unit in unit_literals:
@@ -184,7 +212,7 @@ def dp(clauses: CNF, counter, logger) -> bool:
             return False
 
 
-    # Apply 4th Rule: If a clause is a superset of another clause, remove the superset clause.
+    # Apply the 4th Rule: If a clause is a superset of another clause, remove the superset clause.
     clauses = fourth_rule(clauses, changed)
     if changed[0]:
         return dp(clauses, counter, logger)
@@ -221,7 +249,7 @@ def dpll(clauses: CNF, counter, logger=None) -> (bool, int):
     - Rule4 is used only once at the beginning (as there is less and less chance of it being useful).
 
     :param clauses: A set representing the current CNF.
-    :param counter: A list container of a counter to keep track of the number of recursive calls.
+    :param counter: A list container of a counter to keep track of the recursive calls.
     :param logger: The logger object to log messages.
     :return: True if satisfiable, False otherwise, and the number of recursive calls.
     """
@@ -233,6 +261,11 @@ def dpll(clauses: CNF, counter, logger=None) -> (bool, int):
         logger.debug("Failure: Encountered an empty clause.")
         return False
 
+    # Apply Rule 1: Remove tautologies
+    clauses = first_rule(clauses)
+
+    # Apply Rule 4: Remove clauses that are supersets of other clauses
+    clauses = fourth_rule(clauses, [False])
     return dpll_helper(clauses, counter, logger)
 
 
@@ -243,7 +276,7 @@ def dpll_helper(clauses: CNF, counter, logger=None) -> (bool, int):
     - Rule4 is used only once at the beginning (as there is less and less chance of it being useful).
 
     :param clauses: A set representing the current CNF.
-    :param counter: A list container of a counter to keep track of the number of recursive calls.
+    :param counter: A list container of a counter to keep track of recursive calls.
     :param logger: The logger object to log messages.
     :return: True if satisfiable, False otherwise, and the number of recursive calls.
     """
@@ -258,18 +291,7 @@ def dpll_helper(clauses: CNF, counter, logger=None) -> (bool, int):
         logger.debug("Failure: Encountered an empty clause.")
         return False
 
-    # Apply Rule 4: Remove clauses that are supersets of other clauses
-    clauses = fourth_rule(clauses, changed)
-    if changed[0]:
-        return dpll_helper(clauses, counter, logger)
-    if not clauses:
-        logger.debug("Success: All clauses satisfied.")
-        return True
-    if any(not clause for clause in clauses):
-        logger.debug("Failure: Encountered an empty clause.")
-        return False
-
-    # Unit propagation
+    # Apply 2nd Rule : Unit propagation
     unit_literals = find_unit_clauses(clauses)
     while unit_literals:
         for unit in unit_literals:
@@ -278,14 +300,27 @@ def dpll_helper(clauses: CNF, counter, logger=None) -> (bool, int):
             clauses = remove_value_from_clauses(clauses, -unit, changed)
         unit_literals = find_unit_clauses(clauses)
 
-    if changed[0]:
-        return dpll_helper(clauses, counter, logger)
+    # Stopping conditions
     if not clauses:
         logger.debug("Success: All clauses satisfied.")
         return True
     if any(not clause for clause in clauses):
         logger.debug("Failure: Encountered an empty clause.")
         return False
+
+    # Apply Third Rule: Pure Literal Elimination
+    pure_literals = find_pure_literals(clauses)
+    if pure_literals:
+        for pure in pure_literals:
+            logger.debug(f"Rule 3 activated: Pure literal {pure}.")
+            clauses = remove_clauses_with_value(clauses, pure, changed)
+        # Stopping conditions
+        if not clauses:
+            logger.debug("Success: All clauses satisfied.")
+            return True
+        if any(not clause for clause in clauses):
+            logger.debug("Failure: Encountered an empty clause.")
+            return False
 
     # Branching
     chosen_literal = find_best_literal(clauses)
@@ -303,3 +338,51 @@ def dpll_helper(clauses: CNF, counter, logger=None) -> (bool, int):
 
     # Recursive calls
     return dpll_helper(new_clauses1, counter, logger) or dpll_helper(new_clauses2, counter, logger)
+
+
+def classical_dpll(clauses, counter, logger=None):
+    """
+    Naive DPLL:
+      - clauses: set of frozensets
+      - returns True/False for satisfiability.
+    """
+
+    counter[0] += 1  # counting calls
+
+    # 1) If no clauses => satisfiable
+    if not clauses:
+        return True
+
+    # 2) If any empty clause => unsatisfiable
+    if any(len(cl) == 0 for cl in clauses):
+        return False
+
+    # 3) Unit propagation
+    unit_literals = {next(iter(c)) for c in clauses if len(c) == 1}
+    while unit_literals:
+        for u in unit_literals:
+            # remove all clauses containing u
+            clauses = {c for c in clauses if u not in c}
+            # remove ¬u from remaining clauses
+            clauses = {frozenset(x for x in c if x != -u) for c in clauses}
+        # re-check for new units
+        if any(len(cl) == 0 for cl in clauses):
+            return False
+        unit_literals = {next(iter(c)) for c in clauses if len(c) == 1}
+
+    if not clauses:
+        return True
+
+    # 4) Pick a literal to branch on
+    lit = next(iter(next(iter(clauses)))) # First literal of the first clause
+
+    # Branch: lit = True
+    new_clauses = {c for c in clauses if lit not in c}
+    new_clauses = {frozenset(x for x in c if x != -lit) for c in new_clauses}
+    if classical_dpll(new_clauses, counter, logger):
+        return True
+
+    # Branch: lit = False
+    new_clauses = {c for c in clauses if -lit not in c}
+    new_clauses = {frozenset(x for x in c if x != lit) for c in new_clauses}
+    return classical_dpll(new_clauses, counter, logger)
