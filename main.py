@@ -1,14 +1,14 @@
+# To profile (optional)
+import cProfile
+import io
+import logging
+import pstats
 from glob import glob
-from utils import run_dp_on_files
+
 from DavisPutnamDefaultCleaned import dp as dp_default
 from dp import dp, dpll, classical_dpll
 from dp_with_watchers import dpll as dpll_watchers
-import logging
-
-# To profile (optional)
-import cProfile
-import pstats
-import io
+from utils import run_dp_on_files
 
 
 class Algorithms:

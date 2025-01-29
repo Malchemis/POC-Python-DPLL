@@ -1,5 +1,5 @@
-from typing import List, Set, Callable, FrozenSet
 import time
+from typing import List, Set, Callable, FrozenSet
 
 #Type aliases for clarity
 Literal = int

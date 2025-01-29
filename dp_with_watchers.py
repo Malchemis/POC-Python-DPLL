@@ -2,6 +2,7 @@ from typing import Set, Dict, List
 
 from utils import CNF, Clause, Literal
 
+
 class Formula:
     """
     A Formula encapsulates:

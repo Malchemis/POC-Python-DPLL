@@ -1,6 +1,3 @@
-from numpy import zeros, array
-
-
 # return True if the list of integers contains an integer and its opposite
 # ex.is_tautologie([1,2,3,-1,5]) return True 
 def is_tautologie(clause: list) -> bool:

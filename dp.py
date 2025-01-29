@@ -1,4 +1,5 @@
 from typing import Set, Dict  # Type hints for better readability and error checking
+
 from utils import Literal, Clause, CNF  # Import the custom types
 
 
