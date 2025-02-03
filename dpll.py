@@ -1,6 +1,6 @@
 from typing import Set, Dict  # Type hints for better readability and error checking
 
-from utils import Literal, Clause, CNF  # Import the custom types
+from utils import Literal, Clause, CNF, ChangeTracker  # Import the custom types
 
 
 # Use any and list comprehension to check if a clause is a tautology
@@ -26,7 +26,7 @@ def first_rule(clauses: CNF) -> CNF:
 
 
 # Take advantage of the set operations to remove the clauses with the unit literals
-def remove_value_from_clauses(clauses: CNF, value: Literal, changed: list) -> CNF:
+def remove_value_from_clauses(clauses: CNF, value: Literal, changed: ChangeTracker) -> CNF:
     """
     Remove a specific literal from all clauses and track changes.
 
@@ -39,13 +39,13 @@ def remove_value_from_clauses(clauses: CNF, value: Literal, changed: list) -> CN
     for clause in clauses:
         if value in clause:
             new_clauses.add(clause - {value})
-            changed[0] = True
+            changed.set_changed()  # Mark change if a literal is removed
         else:
             new_clauses.add(clause)
     return new_clauses
 
 
-def remove_clauses_with_value(clauses: CNF, value: Literal, changed: list) -> CNF:
+def remove_clauses_with_value(clauses: CNF, value: Literal, changed: ChangeTracker) -> CNF:
     """
     Remove all clauses that contain a specific literal and track changes.
 
@@ -60,7 +60,7 @@ def remove_clauses_with_value(clauses: CNF, value: Literal, changed: list) -> CN
         if value not in clause:
             new_clauses.add(clause)
         else:
-            changed[0] = True  # Mark change if a clause is removed
+            changed.set_changed()  # Mark change if a clause is removed
     return new_clauses
 
 
@@ -96,7 +96,7 @@ def find_unit_clauses(clauses: CNF) -> Set[Literal]:
     return {next(iter(clause)) for clause in clauses if len(clause) == 1}
 
 
-def fourth_rule(clauses: CNF, changed: list) -> CNF:
+def fourth_rule(clauses: CNF, changed: ChangeTracker) -> CNF:
     """
     Rule 4: Remove clauses that are supersets of other clauses.
     That is, if there is any clause d ⊂ c, we remove c.
@@ -115,63 +115,57 @@ def fourth_rule(clauses: CNF, changed: list) -> CNF:
             if small_clause < larger_clause:  # Proper subset check
                 if larger_clause in new_clauses:
                     new_clauses.remove(larger_clause)
-                    changed[0] = True  # Mark that a change occurred
+                    changed.set_changed()  # Mark change if a clause is removed
 
     return new_clauses
 
 
-# To fasten the search and pick the best literal to branch on,
-# we use a dictionary to count the occurrences of each literal
-def find_best_literal(clauses: CNF) -> Literal:
-    """
-    Heuristic to choose the best literal to branch on.
-    Here, we choose the literal that appears most frequently.
+def find_best_literal(clauses: CNF, n_vars: int=500) -> int:
+    # Arrays to hold counts for positive and negative occurrences.
+    pos_counts = [0] * (n_vars + 1)  # index i for literal i
+    neg_counts = [0] * (n_vars + 1)  # index i for literal -i
 
-    :param clauses: The current CNF.
-    :return: The chosen literal.
-    """
-    literal_frequency: Dict[Literal, int] = {}
+    # Single pass over the clauses
     for clause in clauses:
         for literal in clause:
-            literal_frequency[literal] = literal_frequency.get(literal, 0) + 1
+            if literal > 0:
+                pos_counts[literal] += 1
+            else:
+                neg_counts[-literal] += 1
 
-    # If there are no literals, return 0
-    if not literal_frequency:
-        return 0
+    best_literal = 0
+    best_score = -1
 
-    # Filter on literals l with both polarities
-    # we want to branch on world1 where l is True and world2 where l is False
-    for literal in list(literal_frequency.keys()):
-        if -literal not in literal_frequency:
-            del literal_frequency[literal]
+    # Only consider variables that appear in both polarities.
+    for var in range(1, n_vars + 1):
+        if pos_counts[var] and neg_counts[var]:
+            score = pos_counts[var] + neg_counts[var]
+            if score > best_score:
+                best_score = score
+                best_literal = var if pos_counts[var] >= neg_counts[var] else -var
 
-    # If there are no literals, return 0
-    if not literal_frequency:
-        return 0
-
-    # Choose the literal with the highest frequency
-    best_literal = max(literal_frequency, key=literal_frequency.get)
     return best_literal
 
 
-def dp(clauses: CNF, counter, logger) -> bool:
+def dp(clauses: CNF, counter, logger, n_vars=0) -> bool:
     """
     DP algorithm to determine if the clauses are satisfiable.
     For the order of the rules and the branching, we follow the DP pseudocode
     at https://en.wikipedia.org/wiki/Davis%E2%80%93Putnam_algorithm
 
     :param clauses: A set representing the current CNF.
-    :param counter: A list container of a counter to keep track of the recursive calls.
+    :param counter: Counter object to keep track of the recursive calls.
     :param logger: The logger object to log messages.
+    :param n_vars: The number of variables in the CNF.
     :return: True if satisfiable, False otherwise.
     """
-    changed = [False] # Pass the boolean by reference
-    counter[0] += 1
+    changed = ChangeTracker()  # Wrapper around a boolean to track changes
+    counter.increment()
 
     if not clauses:
         logger.debug("Success: All clauses satisfied.")
         return True
-    if any(not clause for clause in clauses):
+    if frozenset() in clauses:
         logger.debug("Failure: Encountered an empty clause.")
         return False
 
@@ -187,14 +181,14 @@ def dp(clauses: CNF, counter, logger) -> bool:
             clauses = remove_value_from_clauses(clauses, -unit, changed)
         unit_literals = find_unit_clauses(clauses)
 
-    if changed[0]:
-        return dp(clauses, counter, logger)
     if not clauses:
         logger.debug("Success: All clauses satisfied.")
         return True
-    if any(not clause for clause in clauses):
+    if frozenset() in clauses:
         logger.debug("Failure: Encountered an empty clause.")
         return False
+    if changed:
+        return dp(clauses, counter, logger, n_vars)
 
 
     # Apply Third Rule: Pure Literal Elimination
@@ -203,26 +197,26 @@ def dp(clauses: CNF, counter, logger) -> bool:
         for pure in pure_literals:
             logger.debug(f"Rule 3 activated: Pure literal {pure}.")
             clauses = remove_clauses_with_value(clauses, pure, changed)
-        if changed[0]:
-            return dp(clauses, counter, logger)
         if not clauses:
             logger.debug("Success: All clauses satisfied.")
             return True
-        if any(not clause for clause in clauses):
+        if frozenset() in clauses:
             logger.debug("Failure: Encountered an empty clause.")
             return False
+        if changed:
+            return dp(clauses, counter, logger, n_vars)
 
 
     # Apply the 4th Rule: If a clause is a superset of another clause, remove the superset clause.
     clauses = fourth_rule(clauses, changed)
-    if changed[0]:
-        return dp(clauses, counter, logger)
     if not clauses:
         logger.debug("Success: All clauses satisfied.")
         return True
-    if any(not clause for clause in clauses):
+    if frozenset() in clauses:
         logger.debug("Failure: Encountered an empty clause.")
         return False
+    if changed:
+        return dp(clauses, counter, logger, n_vars)
 
 
     # Apply Davis Putnam Branching : If lit and not(lit) are in the clauses, we can branch
@@ -235,15 +229,36 @@ def dp(clauses: CNF, counter, logger) -> bool:
     # Branch 1: Assume chosen_literal is True
     new_clauses1 = remove_clauses_with_value(clauses, chosen_literal, changed)
     new_clauses1 = remove_value_from_clauses(new_clauses1, -chosen_literal, changed)
+    if dp(new_clauses1, counter, logger, n_vars):
+        return True
+
     # Branch 2: Assume chosen_literal is False
     new_clauses2 = remove_clauses_with_value(clauses, -chosen_literal, changed)
     new_clauses2 = remove_value_from_clauses(new_clauses2, chosen_literal, changed)
-
-    # Recursive DP calls
-    return dp(new_clauses1, counter, logger) or dp(new_clauses2, counter, logger)
+    return dp(new_clauses2, counter, logger, n_vars)
 
 
-def dpll(clauses: CNF, counter, logger=None) -> (bool, int):
+def classical_dpll(clauses: CNF, counter, logger=None, n_vars=0) -> (bool, int):
+    """
+    DPLL algorithm to determine if the CNF is satisfiable.
+    Similar to DP, but fewer rules.
+    We do not use heuristics for branching.
+     :param clauses: A set representing the current CNF.
+    :param counter: A list container of a counter to keep track of the recursive calls.
+    :param logger: The logger object to log messages.
+    :param n_vars: The number of variables in the CNF.
+    :return: True if satisfiable, False otherwise, and the number of recursive calls.
+    """
+    # Apply Rule 1: Remove tautologies
+    clauses = first_rule(clauses)
+
+    # Apply Rule 4: Remove clauses that are supersets of other clauses
+    clauses = fourth_rule(clauses, ChangeTracker())
+    # Heuristic: Take the first literal in the clause
+    return dpll_helper(clauses, counter, logger, heuristic=lambda x, n: next(iter(next(iter(x)))), n_vars=n_vars)
+
+
+def dpll(clauses: CNF, counter, logger=None, n_vars=0) -> (bool, int):
     """
     DPLL algorithm to determine if the CNF is satisfiable. Similar to DP, but fewer rules.
     - Only unit propagation and pure literal elimination are used.
@@ -252,43 +267,38 @@ def dpll(clauses: CNF, counter, logger=None) -> (bool, int):
     :param clauses: A set representing the current CNF.
     :param counter: A list container of a counter to keep track of the recursive calls.
     :param logger: The logger object to log messages.
+    :param n_vars: The number of variables in the CNF.
     :return: True if satisfiable, False otherwise, and the number of recursive calls.
     """
-    # Stopping conditions
-    if not clauses:
-        logger.debug("Success: All clauses satisfied.")
-        return True
-    if any(not clause for clause in clauses):
-        logger.debug("Failure: Encountered an empty clause.")
-        return False
-
     # Apply Rule 1: Remove tautologies
     clauses = first_rule(clauses)
 
     # Apply Rule 4: Remove clauses that are supersets of other clauses
-    clauses = fourth_rule(clauses, [False])
-    return dpll_helper(clauses, counter, logger)
+    fourth_rule(clauses, ChangeTracker())
+    return dpll_helper(clauses, counter, logger, heuristic=find_best_literal, n_vars=n_vars)
 
 
-def dpll_helper(clauses: CNF, counter, logger=None) -> (bool, int):
+def dpll_helper(clauses: CNF, counter, logger=None, heuristic=find_best_literal, n_vars=0) -> (bool, int):
     """
     DPLL algorithm to determine if the CNF is satisfiable. Similar to DP, but fewer rules.
     - Only unit propagation and pure literal elimination are used.
     - Rule4 is used only once at the beginning (as there is less and less chance of it being useful).
 
     :param clauses: A set representing the current CNF.
-    :param counter: A list container of a counter to keep track of recursive calls.
+    :param counter: Counter object to keep track of the recursive calls.
     :param logger: The logger object to log messages.
+    :param heuristic: The function to choose the best literal to branch on.
+    :param n_vars: The number of variables in the CNF.
     :return: True if satisfiable, False otherwise, and the number of recursive calls.
     """
-    changed = [False]  # Pass the boolean
-    counter[0] += 1
+    changed = ChangeTracker()  # Wrapper around a boolean to track changes
+    counter.increment()
 
     # Stopping conditions
     if not clauses:
         logger.debug("Success: All clauses satisfied.")
         return True
-    if any(not clause for clause in clauses):
+    if frozenset() in clauses:
         logger.debug("Failure: Encountered an empty clause.")
         return False
 
@@ -305,7 +315,7 @@ def dpll_helper(clauses: CNF, counter, logger=None) -> (bool, int):
     if not clauses:
         logger.debug("Success: All clauses satisfied.")
         return True
-    if any(not clause for clause in clauses):
+    if frozenset() in clauses:
         logger.debug("Failure: Encountered an empty clause.")
         return False
 
@@ -319,12 +329,14 @@ def dpll_helper(clauses: CNF, counter, logger=None) -> (bool, int):
         if not clauses:
             logger.debug("Success: All clauses satisfied.")
             return True
-        if any(not clause for clause in clauses):
+        if frozenset() in clauses:
             logger.debug("Failure: Encountered an empty clause.")
             return False
+        if changed:
+            return dpll_helper(clauses, counter, logger, heuristic, n_vars)
 
     # Branching
-    chosen_literal = find_best_literal(clauses)
+    chosen_literal = heuristic(clauses, n_vars)
     if chosen_literal == 0:
         logger.debug("No literals left, check if all clauses are satisfied")
         return True
@@ -333,57 +345,10 @@ def dpll_helper(clauses: CNF, counter, logger=None) -> (bool, int):
     # Branch 1: Assume chosen_literal is True
     new_clauses1 = remove_clauses_with_value(clauses, chosen_literal, changed)
     new_clauses1 = remove_value_from_clauses(new_clauses1, -chosen_literal, changed)
+    if dpll_helper(new_clauses1, counter, logger, heuristic, n_vars):
+        return True
+
     # Branch 2: Assume chosen_literal is False
     new_clauses2 = remove_clauses_with_value(clauses, -chosen_literal, changed)
     new_clauses2 = remove_value_from_clauses(new_clauses2, chosen_literal, changed)
-
-    # Recursive calls
-    return dpll_helper(new_clauses1, counter, logger) or dpll_helper(new_clauses2, counter, logger)
-
-
-def classical_dpll(clauses, counter, logger=None):
-    """
-    Naive DPLL:
-      - clauses: set of frozensets
-      - returns True/False for satisfiability.
-    """
-
-    counter[0] += 1  # counting calls
-
-    # 1) If no clauses => satisfiable
-    if not clauses:
-        return True
-
-    # 2) If any empty clause => unsatisfiable
-    if any(len(cl) == 0 for cl in clauses):
-        return False
-
-    # 3) Unit propagation
-    unit_literals = {next(iter(c)) for c in clauses if len(c) == 1}
-    while unit_literals:
-        for u in unit_literals:
-            # remove all clauses containing u
-            clauses = {c for c in clauses if u not in c}
-            # remove ¬u from remaining clauses
-            clauses = {frozenset(x for x in c if x != -u) for c in clauses}
-        # re-check for new units
-        if any(len(cl) == 0 for cl in clauses):
-            return False
-        unit_literals = {next(iter(c)) for c in clauses if len(c) == 1}
-
-    if not clauses:
-        return True
-
-    # 4) Pick a literal to branch on
-    lit = next(iter(next(iter(clauses)))) # First literal of the first clause
-
-    # Branch: lit = True
-    new_clauses = {c for c in clauses if lit not in c}
-    new_clauses = {frozenset(x for x in c if x != -lit) for c in new_clauses}
-    if classical_dpll(new_clauses, counter, logger):
-        return True
-
-    # Branch: lit = False
-    new_clauses = {c for c in clauses if -lit not in c}
-    new_clauses = {frozenset(x for x in c if x != lit) for c in new_clauses}
-    return classical_dpll(new_clauses, counter, logger)
+    return dpll_helper(new_clauses2, counter, logger, heuristic, n_vars)

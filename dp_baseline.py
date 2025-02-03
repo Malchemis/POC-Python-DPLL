@@ -74,7 +74,7 @@ def exists_in_clauses(value: int, clauses: list) -> bool:
 
 def find_single_literal(clauses: list) -> int:
     """
-    Find a literal that appears in clauses but its negation does not appear in any clause.
+    Find a literal that appears in clauses, but its negation does not appear in any clause.
 
     :param clauses: List of clauses.
     :return: The single literal if found, otherwise 0.
@@ -142,7 +142,7 @@ def find_non_single_literal(clauses: list) -> int:
 
 def fifth_rule(clauses: list) -> tuple:
     """
-    Rule 5: Create new branches by choosing a literal and splitting the problem into two sub-problems.
+    Rule 5: Create new branches by choosing a literal and splitting the problem into two subproblems.
 
     :param clauses: List of clauses.
     :return: A tuple containing two lists of clauses representing the new branches.
@@ -175,16 +175,18 @@ def formulas_equal(f1: list, f2: list) -> bool:
     return True
 
 
-def dp(clauses: list, counter, logger) -> bool:
+def dp_default(clauses: list, counter, logger, n_vars=0) -> bool:
     """
     DP algorithm to determine if the clauses are satisfiable.
 
     :param clauses: List of clauses.
-    :param counter: List container of a counter to keep track of the number of times DP is called.
+    :param counter: Counter object to keep track of recursive calls.
     :param logger: The logger object to use for logging.
+    :param n_vars: The number of variables in the CNF formula.
+    (not used in this implementation, just for signature)
     :return: True if satisfiable, False otherwise.
     """
-    counter[0] += 1
+    counter.increment()
 
     # Apply Rule 1
     clauses = first_rule(clauses)
@@ -204,7 +206,7 @@ def dp(clauses: list, counter, logger) -> bool:
         logger.debug("Failure: Encountered an empty clause after Rule 2.")
         return False
     if not formulas_equal(first_rule(clauses), clauses):
-        return dp(clauses, counter, logger)
+        return dp_default(clauses, counter, logger)
 
     # Apply Rule 3
     clauses = third_rule(clauses)
@@ -215,7 +217,7 @@ def dp(clauses: list, counter, logger) -> bool:
         logger.debug("Failure: Encountered an empty clause after Rule 3.")
         return False
     if not formulas_equal(second_rule(clauses), clauses):
-        return dp(clauses, counter, logger)
+        return dp_default(clauses, counter, logger)
 
     # Apply Rule 4
     clauses = fourth_rule(clauses)
@@ -226,12 +228,12 @@ def dp(clauses: list, counter, logger) -> bool:
         logger.debug("Failure: Encountered an empty clause after Rule 4.")
         return False
     if not formulas_equal(third_rule(clauses), clauses):
-        return dp(clauses, counter, logger)
+        return dp_default(clauses, counter, logger)
 
     # Apply Rule 5
     branch1, branch2 = fifth_rule(clauses)
     if branch1 or branch2:
-        result = dp(branch1, counter, logger) or dp(branch2, counter, logger)
+        result = dp_default(branch1, counter, logger) or dp_default(branch2, counter, logger)
         logger.debug(f'Finished resolving clauses: {clauses}')
         return result
 
