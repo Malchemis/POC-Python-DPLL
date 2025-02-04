@@ -1,0 +1,439 @@
+/bin/bash /home/malchemis/PycharmProjects/POC-Python-DPLL/schedule_runs.sh
+Running via Python algorithm dp_default 10 times...
+2025-02-04 14:15:03,286 - INFO - Starting Algorithm dp_default with clauses from uf50/uf50-01.cnf
+2025-02-04 14:15:20,108 - INFO - Formula is SAT. Total run time (10): 16.817376 seconds. Avg time: 1.681738 sec. Algorithm dp_default called 1880 times.
+2025-02-04 14:15:20,108 - INFO - Starting Algorithm dp_default with clauses from uf50/uf50-010.cnf
+2025-02-04 14:15:23,356 - INFO - Formula is SAT. Total run time (10): 3.242702 seconds. Avg time: 0.324270 sec. Algorithm dp_default called 285 times.
+2025-02-04 14:15:23,356 - INFO - Starting Algorithm dp_default with clauses from uf50/uf50-02.cnf
+2025-02-04 14:15:28,694 - INFO - Formula is SAT. Total run time (10): 5.333788 seconds. Avg time: 0.533379 sec. Algorithm dp_default called 522 times.
+2025-02-04 14:15:28,694 - INFO - Starting Algorithm dp_default with clauses from uf50/uf50-03.cnf
+2025-02-04 14:15:29,946 - INFO - Formula is SAT. Total run time (10): 1.247517 seconds. Avg time: 0.124752 sec. Algorithm dp_default called 34 times.
+2025-02-04 14:15:29,946 - INFO - Starting Algorithm dp_default with clauses from uf50/uf50-04.cnf
+2025-02-04 14:15:55,208 - INFO - Formula is SAT. Total run time (10): 25.257872 seconds. Avg time: 2.525787 sec. Algorithm dp_default called 2466 times.
+2025-02-04 14:15:55,209 - INFO - Starting Algorithm dp_default with clauses from uf50/uf50-05.cnf
+2025-02-04 14:15:58,680 - INFO - Formula is SAT. Total run time (10): 3.467270 seconds. Avg time: 0.346727 sec. Algorithm dp_default called 245 times.
+2025-02-04 14:15:58,680 - INFO - Starting Algorithm dp_default with clauses from uf50/uf50-06.cnf
+2025-02-04 14:16:27,236 - INFO - Formula is SAT. Total run time (10): 28.550584 seconds. Avg time: 2.855058 sec. Algorithm dp_default called 2863 times.
+2025-02-04 14:16:27,236 - INFO - Starting Algorithm dp_default with clauses from uf50/uf50-07.cnf
+2025-02-04 14:16:56,613 - INFO - Formula is SAT. Total run time (10): 29.373276 seconds. Avg time: 2.937328 sec. Algorithm dp_default called 2056 times.
+2025-02-04 14:16:56,613 - INFO - Starting Algorithm dp_default with clauses from uf50/uf50-08.cnf
+2025-02-04 14:16:57,916 - INFO - Formula is SAT. Total run time (10): 1.297930 seconds. Avg time: 0.129793 sec. Algorithm dp_default called 44 times.
+2025-02-04 14:16:57,916 - INFO - Starting Algorithm dp_default with clauses from uf50/uf50-09.cnf
+2025-02-04 14:17:06,134 - INFO - Formula is SAT. Total run time (10): 8.213549 seconds. Avg time: 0.821355 sec. Algorithm dp_default called 585 times.
+2025-02-04 14:17:06,134 - INFO - Starting Algorithm dp_default with clauses from uuf50/uuf50-01.cnf
+2025-02-04 14:17:20,630 - INFO - Formula is UNSAT. Total run time (10): 14.491224 seconds. Avg time: 1.449122 sec. Algorithm dp_default called 1150 times.
+2025-02-04 14:17:20,630 - INFO - Starting Algorithm dp_default with clauses from uuf50/uuf50-010.cnf
+2025-02-04 14:17:48,816 - INFO - Formula is UNSAT. Total run time (10): 28.181306 seconds. Avg time: 2.818131 sec. Algorithm dp_default called 2371 times.
+2025-02-04 14:17:48,816 - INFO - Starting Algorithm dp_default with clauses from uuf50/uuf50-02.cnf
+2025-02-04 14:18:15,724 - INFO - Formula is UNSAT. Total run time (10): 26.902592 seconds. Avg time: 2.690259 sec. Algorithm dp_default called 2045 times.
+2025-02-04 14:18:15,724 - INFO - Starting Algorithm dp_default with clauses from uuf50/uuf50-03.cnf
+2025-02-04 14:18:58,366 - INFO - Formula is UNSAT. Total run time (10): 42.637908 seconds. Avg time: 4.263791 sec. Algorithm dp_default called 3432 times.
+2025-02-04 14:18:58,366 - INFO - Starting Algorithm dp_default with clauses from uuf50/uuf50-04.cnf
+2025-02-04 14:19:30,309 - INFO - Formula is UNSAT. Total run time (10): 31.938466 seconds. Avg time: 3.193847 sec. Algorithm dp_default called 2548 times.
+2025-02-04 14:19:30,309 - INFO - Starting Algorithm dp_default with clauses from uuf50/uuf50-05.cnf
+2025-02-04 14:20:27,895 - INFO - Formula is UNSAT. Total run time (10): 57.581261 seconds. Avg time: 5.758126 sec. Algorithm dp_default called 4976 times.
+2025-02-04 14:20:27,895 - INFO - Starting Algorithm dp_default with clauses from uuf50/uuf50-06.cnf
+2025-02-04 14:21:04,204 - INFO - Formula is UNSAT. Total run time (10): 36.304389 seconds. Avg time: 3.630439 sec. Algorithm dp_default called 2765 times.
+2025-02-04 14:21:04,204 - INFO - Starting Algorithm dp_default with clauses from uuf50/uuf50-07.cnf
+2025-02-04 14:21:24,846 - INFO - Formula is UNSAT. Total run time (10): 20.637573 seconds. Avg time: 2.063757 sec. Algorithm dp_default called 1825 times.
+2025-02-04 14:21:24,847 - INFO - Starting Algorithm dp_default with clauses from uuf50/uuf50-08.cnf
+2025-02-04 14:21:44,612 - INFO - Formula is UNSAT. Total run time (10): 19.760601 seconds. Avg time: 1.976060 sec. Algorithm dp_default called 1709 times.
+2025-02-04 14:21:44,612 - INFO - Starting Algorithm dp_default with clauses from uuf50/uuf50-09.cnf
+2025-02-04 14:22:04,637 - INFO - Formula is UNSAT. Total run time (10): 20.020898 seconds. Avg time: 2.002090 sec. Algorithm dp_default called 1664 times.
+2025-02-04 14:22:04,637 - INFO - Total time taken: 421.25808 seconds for 20 files, with 10 run(s) each.
+Running via Python algorithm dp 10 times...
+2025-02-04 14:22:04,701 - INFO - Starting Algorithm dp with clauses from uf50/uf50-01.cnf
+2025-02-04 14:22:04,983 - INFO - Formula is SAT. Total run time (10): 0.278054 seconds. Avg time: 0.027805 sec. Algorithm dp called 83 times.
+2025-02-04 14:22:04,983 - INFO - Starting Algorithm dp with clauses from uf50/uf50-010.cnf
+2025-02-04 14:22:05,285 - INFO - Formula is SAT. Total run time (10): 0.297723 seconds. Avg time: 0.029772 sec. Algorithm dp called 70 times.
+2025-02-04 14:22:05,285 - INFO - Starting Algorithm dp with clauses from uf50/uf50-02.cnf
+2025-02-04 14:22:06,102 - INFO - Formula is SAT. Total run time (10): 0.812433 seconds. Avg time: 0.081243 sec. Algorithm dp called 187 times.
+2025-02-04 14:22:06,102 - INFO - Starting Algorithm dp with clauses from uf50/uf50-03.cnf
+2025-02-04 14:22:06,357 - INFO - Formula is SAT. Total run time (10): 0.250819 seconds. Avg time: 0.025082 sec. Algorithm dp called 59 times.
+2025-02-04 14:22:06,357 - INFO - Starting Algorithm dp with clauses from uf50/uf50-04.cnf
+2025-02-04 14:22:06,740 - INFO - Formula is SAT. Total run time (10): 0.378061 seconds. Avg time: 0.037806 sec. Algorithm dp called 72 times.
+2025-02-04 14:22:06,740 - INFO - Starting Algorithm dp with clauses from uf50/uf50-05.cnf
+2025-02-04 14:22:06,926 - INFO - Formula is SAT. Total run time (10): 0.181897 seconds. Avg time: 0.018190 sec. Algorithm dp called 38 times.
+2025-02-04 14:22:06,926 - INFO - Starting Algorithm dp with clauses from uf50/uf50-06.cnf
+2025-02-04 14:22:07,536 - INFO - Formula is SAT. Total run time (10): 0.605763 seconds. Avg time: 0.060576 sec. Algorithm dp called 144 times.
+2025-02-04 14:22:07,536 - INFO - Starting Algorithm dp with clauses from uf50/uf50-07.cnf
+2025-02-04 14:22:07,629 - INFO - Formula is SAT. Total run time (10): 0.088498 seconds. Avg time: 0.008850 sec. Algorithm dp called 14 times.
+2025-02-04 14:22:07,629 - INFO - Starting Algorithm dp with clauses from uf50/uf50-08.cnf
+2025-02-04 14:22:07,920 - INFO - Formula is SAT. Total run time (10): 0.286370 seconds. Avg time: 0.028637 sec. Algorithm dp called 70 times.
+2025-02-04 14:22:07,920 - INFO - Starting Algorithm dp with clauses from uf50/uf50-09.cnf
+2025-02-04 14:22:08,042 - INFO - Formula is SAT. Total run time (10): 0.118567 seconds. Avg time: 0.011857 sec. Algorithm dp called 41 times.
+2025-02-04 14:22:08,043 - INFO - Starting Algorithm dp with clauses from uuf50/uuf50-01.cnf
+2025-02-04 14:22:09,291 - INFO - Formula is UNSAT. Total run time (10): 1.243941 seconds. Avg time: 0.124394 sec. Algorithm dp called 250 times.
+2025-02-04 14:22:09,291 - INFO - Starting Algorithm dp with clauses from uuf50/uuf50-010.cnf
+2025-02-04 14:22:09,992 - INFO - Formula is UNSAT. Total run time (10): 0.696831 seconds. Avg time: 0.069683 sec. Algorithm dp called 141 times.
+2025-02-04 14:22:09,992 - INFO - Starting Algorithm dp with clauses from uuf50/uuf50-02.cnf
+2025-02-04 14:22:10,635 - INFO - Formula is UNSAT. Total run time (10): 0.638221 seconds. Avg time: 0.063822 sec. Algorithm dp called 121 times.
+2025-02-04 14:22:10,635 - INFO - Starting Algorithm dp with clauses from uuf50/uuf50-03.cnf
+2025-02-04 14:22:11,175 - INFO - Formula is UNSAT. Total run time (10): 0.535792 seconds. Avg time: 0.053579 sec. Algorithm dp called 111 times.
+2025-02-04 14:22:11,175 - INFO - Starting Algorithm dp with clauses from uuf50/uuf50-04.cnf
+2025-02-04 14:22:12,034 - INFO - Formula is UNSAT. Total run time (10): 0.854243 seconds. Avg time: 0.085424 sec. Algorithm dp called 185 times.
+2025-02-04 14:22:12,034 - INFO - Starting Algorithm dp with clauses from uuf50/uuf50-05.cnf
+2025-02-04 14:22:12,624 - INFO - Formula is UNSAT. Total run time (10): 0.585935 seconds. Avg time: 0.058593 sec. Algorithm dp called 114 times.
+2025-02-04 14:22:12,624 - INFO - Starting Algorithm dp with clauses from uuf50/uuf50-06.cnf
+2025-02-04 14:22:13,644 - INFO - Formula is UNSAT. Total run time (10): 1.014926 seconds. Avg time: 0.101493 sec. Algorithm dp called 200 times.
+2025-02-04 14:22:13,644 - INFO - Starting Algorithm dp with clauses from uuf50/uuf50-07.cnf
+2025-02-04 14:22:14,549 - INFO - Formula is UNSAT. Total run time (10): 0.900532 seconds. Avg time: 0.090053 sec. Algorithm dp called 194 times.
+2025-02-04 14:22:14,549 - INFO - Starting Algorithm dp with clauses from uuf50/uuf50-08.cnf
+2025-02-04 14:22:15,367 - INFO - Formula is UNSAT. Total run time (10): 0.813284 seconds. Avg time: 0.081328 sec. Algorithm dp called 144 times.
+2025-02-04 14:22:15,367 - INFO - Starting Algorithm dp with clauses from uuf50/uuf50-09.cnf
+2025-02-04 14:22:16,006 - INFO - Formula is UNSAT. Total run time (10): 0.634709 seconds. Avg time: 0.063471 sec. Algorithm dp called 120 times.
+2025-02-04 14:22:16,006 - INFO - Total time taken: 11.21660 seconds for 20 files, with 10 run(s) each.
+Running via Python algorithm classical_dpll 10 times...
+2025-02-04 14:22:16,068 - INFO - Starting Algorithm classical_dpll with clauses from uf50/uf50-01.cnf
+2025-02-04 14:22:16,643 - INFO - Formula is SAT. Total run time (10): 0.570570 seconds. Avg time: 0.057057 sec. Algorithm classical_dpll called 296 times.
+2025-02-04 14:22:16,643 - INFO - Starting Algorithm classical_dpll with clauses from uf50/uf50-010.cnf
+2025-02-04 14:22:17,331 - INFO - Formula is SAT. Total run time (10): 0.683929 seconds. Avg time: 0.068393 sec. Algorithm classical_dpll called 328 times.
+2025-02-04 14:22:17,331 - INFO - Starting Algorithm classical_dpll with clauses from uf50/uf50-02.cnf
+2025-02-04 14:22:17,580 - INFO - Formula is SAT. Total run time (10): 0.244282 seconds. Avg time: 0.024428 sec. Algorithm classical_dpll called 111 times.
+2025-02-04 14:22:17,580 - INFO - Starting Algorithm classical_dpll with clauses from uf50/uf50-03.cnf
+2025-02-04 14:22:17,609 - INFO - Formula is SAT. Total run time (10): 0.025079 seconds. Avg time: 0.002508 sec. Algorithm classical_dpll called 17 times.
+2025-02-04 14:22:17,609 - INFO - Starting Algorithm classical_dpll with clauses from uf50/uf50-04.cnf
+2025-02-04 14:22:19,527 - INFO - Formula is SAT. Total run time (10): 1.913421 seconds. Avg time: 0.191342 sec. Algorithm classical_dpll called 694 times.
+2025-02-04 14:22:19,527 - INFO - Starting Algorithm classical_dpll with clauses from uf50/uf50-05.cnf
+2025-02-04 14:22:19,666 - INFO - Formula is SAT. Total run time (10): 0.134984 seconds. Avg time: 0.013498 sec. Algorithm classical_dpll called 56 times.
+2025-02-04 14:22:19,666 - INFO - Starting Algorithm classical_dpll with clauses from uf50/uf50-06.cnf
+2025-02-04 14:22:20,270 - INFO - Formula is SAT. Total run time (10): 0.599066 seconds. Avg time: 0.059907 sec. Algorithm classical_dpll called 265 times.
+2025-02-04 14:22:20,270 - INFO - Starting Algorithm classical_dpll with clauses from uf50/uf50-07.cnf
+2025-02-04 14:22:21,326 - INFO - Formula is SAT. Total run time (10): 1.052301 seconds. Avg time: 0.105230 sec. Algorithm classical_dpll called 349 times.
+2025-02-04 14:22:21,327 - INFO - Starting Algorithm classical_dpll with clauses from uf50/uf50-08.cnf
+2025-02-04 14:22:21,357 - INFO - Formula is SAT. Total run time (10): 0.026381 seconds. Avg time: 0.002638 sec. Algorithm classical_dpll called 25 times.
+2025-02-04 14:22:21,357 - INFO - Starting Algorithm classical_dpll with clauses from uf50/uf50-09.cnf
+2025-02-04 14:22:21,538 - INFO - Formula is SAT. Total run time (10): 0.177213 seconds. Avg time: 0.017721 sec. Algorithm classical_dpll called 64 times.
+2025-02-04 14:22:21,539 - INFO - Starting Algorithm classical_dpll with clauses from uuf50/uuf50-01.cnf
+2025-02-04 14:22:22,000 - INFO - Formula is UNSAT. Total run time (10): 0.457245 seconds. Avg time: 0.045724 sec. Algorithm classical_dpll called 137 times.
+2025-02-04 14:22:22,000 - INFO - Starting Algorithm classical_dpll with clauses from uuf50/uuf50-010.cnf
+2025-02-04 14:22:22,680 - INFO - Formula is UNSAT. Total run time (10): 0.674876 seconds. Avg time: 0.067488 sec. Algorithm classical_dpll called 262 times.
+2025-02-04 14:22:22,680 - INFO - Starting Algorithm classical_dpll with clauses from uuf50/uuf50-02.cnf
+2025-02-04 14:22:23,522 - INFO - Formula is UNSAT. Total run time (10): 0.837919 seconds. Avg time: 0.083792 sec. Algorithm classical_dpll called 276 times.
+2025-02-04 14:22:23,522 - INFO - Starting Algorithm classical_dpll with clauses from uuf50/uuf50-03.cnf
+2025-02-04 14:22:25,275 - INFO - Formula is UNSAT. Total run time (10): 1.748783 seconds. Avg time: 0.174878 sec. Algorithm classical_dpll called 660 times.
+2025-02-04 14:22:25,275 - INFO - Starting Algorithm classical_dpll with clauses from uuf50/uuf50-04.cnf
+2025-02-04 14:22:26,869 - INFO - Formula is UNSAT. Total run time (10): 1.589118 seconds. Avg time: 0.158912 sec. Algorithm classical_dpll called 512 times.
+2025-02-04 14:22:26,869 - INFO - Starting Algorithm classical_dpll with clauses from uuf50/uuf50-05.cnf
+2025-02-04 14:22:27,718 - INFO - Formula is UNSAT. Total run time (10): 0.844281 seconds. Avg time: 0.084428 sec. Algorithm classical_dpll called 290 times.
+2025-02-04 14:22:27,718 - INFO - Starting Algorithm classical_dpll with clauses from uuf50/uuf50-06.cnf
+2025-02-04 14:22:29,669 - INFO - Formula is UNSAT. Total run time (10): 1.946231 seconds. Avg time: 0.194623 sec. Algorithm classical_dpll called 693 times.
+2025-02-04 14:22:29,669 - INFO - Starting Algorithm classical_dpll with clauses from uuf50/uuf50-07.cnf
+2025-02-04 14:22:30,687 - INFO - Formula is UNSAT. Total run time (10): 1.013467 seconds. Avg time: 0.101347 sec. Algorithm classical_dpll called 354 times.
+2025-02-04 14:22:30,687 - INFO - Starting Algorithm classical_dpll with clauses from uuf50/uuf50-08.cnf
+2025-02-04 14:22:31,874 - INFO - Formula is UNSAT. Total run time (10): 1.182587 seconds. Avg time: 0.118259 sec. Algorithm classical_dpll called 422 times.
+2025-02-04 14:22:31,874 - INFO - Starting Algorithm classical_dpll with clauses from uuf50/uuf50-09.cnf
+2025-02-04 14:22:32,895 - INFO - Formula is UNSAT. Total run time (10): 1.015907 seconds. Avg time: 0.101591 sec. Algorithm classical_dpll called 379 times.
+2025-02-04 14:22:32,895 - INFO - Total time taken: 16.73764 seconds for 20 files, with 10 run(s) each.
+Running via Python algorithm dpll 10 times...
+2025-02-04 14:22:32,968 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-01.cnf
+2025-02-04 14:22:33,086 - INFO - Formula is SAT. Total run time (10): 0.113478 seconds. Avg time: 0.011348 sec. Algorithm dpll called 56 times.
+2025-02-04 14:22:33,086 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-010.cnf
+2025-02-04 14:22:33,223 - INFO - Formula is SAT. Total run time (10): 0.132312 seconds. Avg time: 0.013231 sec. Algorithm dpll called 48 times.
+2025-02-04 14:22:33,223 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-02.cnf
+2025-02-04 14:22:33,426 - INFO - Formula is SAT. Total run time (10): 0.198974 seconds. Avg time: 0.019897 sec. Algorithm dpll called 82 times.
+2025-02-04 14:22:33,426 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-03.cnf
+2025-02-04 14:22:33,516 - INFO - Formula is SAT. Total run time (10): 0.085792 seconds. Avg time: 0.008579 sec. Algorithm dpll called 39 times.
+2025-02-04 14:22:33,516 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-04.cnf
+2025-02-04 14:22:33,651 - INFO - Formula is SAT. Total run time (10): 0.131267 seconds. Avg time: 0.013127 sec. Algorithm dpll called 45 times.
+2025-02-04 14:22:33,651 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-05.cnf
+2025-02-04 14:22:33,742 - INFO - Formula is SAT. Total run time (10): 0.086247 seconds. Avg time: 0.008625 sec. Algorithm dpll called 37 times.
+2025-02-04 14:22:33,742 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-06.cnf
+2025-02-04 14:22:34,099 - INFO - Formula is SAT. Total run time (10): 0.352923 seconds. Avg time: 0.035292 sec. Algorithm dpll called 149 times.
+2025-02-04 14:22:34,099 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-07.cnf
+2025-02-04 14:22:34,143 - INFO - Formula is SAT. Total run time (10): 0.039856 seconds. Avg time: 0.003986 sec. Algorithm dpll called 22 times.
+2025-02-04 14:22:34,143 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-08.cnf
+2025-02-04 14:22:34,279 - INFO - Formula is SAT. Total run time (10): 0.132399 seconds. Avg time: 0.013240 sec. Algorithm dpll called 51 times.
+2025-02-04 14:22:34,279 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-09.cnf
+2025-02-04 14:22:34,325 - INFO - Formula is SAT. Total run time (10): 0.041599 seconds. Avg time: 0.004160 sec. Algorithm dpll called 25 times.
+2025-02-04 14:22:34,325 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-01.cnf
+2025-02-04 14:22:34,927 - INFO - Formula is UNSAT. Total run time (10): 0.596964 seconds. Avg time: 0.059696 sec. Algorithm dpll called 178 times.
+2025-02-04 14:22:34,927 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-010.cnf
+2025-02-04 14:22:35,197 - INFO - Formula is UNSAT. Total run time (10): 0.266484 seconds. Avg time: 0.026648 sec. Algorithm dpll called 86 times.
+2025-02-04 14:22:35,197 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-02.cnf
+2025-02-04 14:22:35,477 - INFO - Formula is UNSAT. Total run time (10): 0.275794 seconds. Avg time: 0.027579 sec. Algorithm dpll called 87 times.
+2025-02-04 14:22:35,478 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-03.cnf
+2025-02-04 14:22:35,755 - INFO - Formula is UNSAT. Total run time (10): 0.273590 seconds. Avg time: 0.027359 sec. Algorithm dpll called 86 times.
+2025-02-04 14:22:35,755 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-04.cnf
+2025-02-04 14:22:36,135 - INFO - Formula is UNSAT. Total run time (10): 0.375585 seconds. Avg time: 0.037559 sec. Algorithm dpll called 118 times.
+2025-02-04 14:22:36,135 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-05.cnf
+2025-02-04 14:22:36,395 - INFO - Formula is UNSAT. Total run time (10): 0.255087 seconds. Avg time: 0.025509 sec. Algorithm dpll called 81 times.
+2025-02-04 14:22:36,395 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-06.cnf
+2025-02-04 14:22:36,791 - INFO - Formula is UNSAT. Total run time (10): 0.392094 seconds. Avg time: 0.039209 sec. Algorithm dpll called 115 times.
+2025-02-04 14:22:36,791 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-07.cnf
+2025-02-04 14:22:37,126 - INFO - Formula is UNSAT. Total run time (10): 0.330875 seconds. Avg time: 0.033087 sec. Algorithm dpll called 111 times.
+2025-02-04 14:22:37,126 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-08.cnf
+2025-02-04 14:22:37,472 - INFO - Formula is UNSAT. Total run time (10): 0.342016 seconds. Avg time: 0.034202 sec. Algorithm dpll called 102 times.
+2025-02-04 14:22:37,473 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-09.cnf
+2025-02-04 14:22:37,756 - INFO - Formula is UNSAT. Total run time (10): 0.279049 seconds. Avg time: 0.027905 sec. Algorithm dpll called 75 times.
+2025-02-04 14:22:37,756 - INFO - Total time taken: 4.70239 seconds for 20 files, with 10 run(s) each.
+Running via Python algorithm dpll_watchers 10 times...
+2025-02-04 14:22:37,822 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-01.cnf
+2025-02-04 14:22:37,939 - INFO - Formula is SAT. Total run time (10): 0.112440 seconds. Avg time: 0.011244 sec. Algorithm dpll called 22 times.
+2025-02-04 14:22:37,939 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-010.cnf
+2025-02-04 14:22:38,077 - INFO - Formula is SAT. Total run time (10): 0.133753 seconds. Avg time: 0.013375 sec. Algorithm dpll called 22 times.
+2025-02-04 14:22:38,077 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-02.cnf
+2025-02-04 14:22:38,267 - INFO - Formula is SAT. Total run time (10): 0.185122 seconds. Avg time: 0.018512 sec. Algorithm dpll called 39 times.
+2025-02-04 14:22:38,267 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-03.cnf
+2025-02-04 14:22:38,354 - INFO - Formula is SAT. Total run time (10): 0.082899 seconds. Avg time: 0.008290 sec. Algorithm dpll called 16 times.
+2025-02-04 14:22:38,354 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-04.cnf
+2025-02-04 14:22:38,489 - INFO - Formula is SAT. Total run time (10): 0.130073 seconds. Avg time: 0.013007 sec. Algorithm dpll called 25 times.
+2025-02-04 14:22:38,489 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-05.cnf
+2025-02-04 14:22:38,584 - INFO - Formula is SAT. Total run time (10): 0.091257 seconds. Avg time: 0.009126 sec. Algorithm dpll called 20 times.
+2025-02-04 14:22:38,584 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-06.cnf
+2025-02-04 14:22:38,923 - INFO - Formula is SAT. Total run time (10): 0.333512 seconds. Avg time: 0.033351 sec. Algorithm dpll called 62 times.
+2025-02-04 14:22:38,923 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-07.cnf
+2025-02-04 14:22:38,975 - INFO - Formula is SAT. Total run time (10): 0.048004 seconds. Avg time: 0.004800 sec. Algorithm dpll called 14 times.
+2025-02-04 14:22:38,975 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-08.cnf
+2025-02-04 14:22:39,112 - INFO - Formula is SAT. Total run time (10): 0.132268 seconds. Avg time: 0.013227 sec. Algorithm dpll called 27 times.
+2025-02-04 14:22:39,112 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-09.cnf
+2025-02-04 14:22:39,172 - INFO - Formula is SAT. Total run time (10): 0.055428 seconds. Avg time: 0.005543 sec. Algorithm dpll called 16 times.
+2025-02-04 14:22:39,172 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-01.cnf
+2025-02-04 14:22:39,678 - INFO - Formula is UNSAT. Total run time (10): 0.501290 seconds. Avg time: 0.050129 sec. Algorithm dpll called 87 times.
+2025-02-04 14:22:39,678 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-010.cnf
+2025-02-04 14:22:39,907 - INFO - Formula is UNSAT. Total run time (10): 0.224790 seconds. Avg time: 0.022479 sec. Algorithm dpll called 35 times.
+2025-02-04 14:22:39,907 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-02.cnf
+2025-02-04 14:22:40,149 - INFO - Formula is UNSAT. Total run time (10): 0.236795 seconds. Avg time: 0.023679 sec. Algorithm dpll called 38 times.
+2025-02-04 14:22:40,149 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-03.cnf
+2025-02-04 14:22:40,383 - INFO - Formula is UNSAT. Total run time (10): 0.229291 seconds. Avg time: 0.022929 sec. Algorithm dpll called 38 times.
+2025-02-04 14:22:40,383 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-04.cnf
+2025-02-04 14:22:40,722 - INFO - Formula is UNSAT. Total run time (10): 0.334743 seconds. Avg time: 0.033474 sec. Algorithm dpll called 54 times.
+2025-02-04 14:22:40,722 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-05.cnf
+2025-02-04 14:22:40,955 - INFO - Formula is UNSAT. Total run time (10): 0.228301 seconds. Avg time: 0.022830 sec. Algorithm dpll called 35 times.
+2025-02-04 14:22:40,955 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-06.cnf
+2025-02-04 14:22:41,275 - INFO - Formula is UNSAT. Total run time (10): 0.315693 seconds. Avg time: 0.031569 sec. Algorithm dpll called 51 times.
+2025-02-04 14:22:41,276 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-07.cnf
+2025-02-04 14:22:41,571 - INFO - Formula is UNSAT. Total run time (10): 0.290624 seconds. Avg time: 0.029062 sec. Algorithm dpll called 47 times.
+2025-02-04 14:22:41,571 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-08.cnf
+2025-02-04 14:22:41,862 - INFO - Formula is UNSAT. Total run time (10): 0.285909 seconds. Avg time: 0.028591 sec. Algorithm dpll called 44 times.
+2025-02-04 14:22:41,862 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-09.cnf
+2025-02-04 14:22:42,067 - INFO - Formula is UNSAT. Total run time (10): 0.201026 seconds. Avg time: 0.020103 sec. Algorithm dpll called 35 times.
+2025-02-04 14:22:42,067 - INFO - Total time taken: 4.15322 seconds for 20 files, with 10 run(s) each.
+Running via PyPy algorithm dp_default 10 times...
+2025-02-04 14:22:42,204 - INFO - Starting Algorithm dp_default with clauses from uf50/uf50-01.cnf
+2025-02-04 14:22:44,941 - INFO - Formula is SAT. Total run time (10): 2.718407 seconds. Avg time: 0.271841 sec. Algorithm dp_default called 456 times.
+2025-02-04 14:22:44,941 - INFO - Starting Algorithm dp_default with clauses from uf50/uf50-010.cnf
+2025-02-04 14:22:46,572 - INFO - Formula is SAT. Total run time (10): 1.627500 seconds. Avg time: 0.162750 sec. Algorithm dp_default called 364 times.
+2025-02-04 14:22:46,572 - INFO - Starting Algorithm dp_default with clauses from uf50/uf50-02.cnf
+2025-02-04 14:22:55,786 - INFO - Formula is SAT. Total run time (10): 9.210077 seconds. Avg time: 0.921008 sec. Algorithm dp_default called 2166 times.
+2025-02-04 14:22:55,786 - INFO - Starting Algorithm dp_default with clauses from uf50/uf50-03.cnf
+2025-02-04 14:22:56,322 - INFO - Formula is SAT. Total run time (10): 0.531592 seconds. Avg time: 0.053159 sec. Algorithm dp_default called 31 times.
+2025-02-04 14:22:56,322 - INFO - Starting Algorithm dp_default with clauses from uf50/uf50-04.cnf
+2025-02-04 14:23:03,821 - INFO - Formula is SAT. Total run time (10): 7.495327 seconds. Avg time: 0.749533 sec. Algorithm dp_default called 1372 times.
+2025-02-04 14:23:03,821 - INFO - Starting Algorithm dp_default with clauses from uf50/uf50-05.cnf
+2025-02-04 14:23:04,541 - INFO - Formula is SAT. Total run time (10): 0.716581 seconds. Avg time: 0.071658 sec. Algorithm dp_default called 90 times.
+2025-02-04 14:23:04,541 - INFO - Starting Algorithm dp_default with clauses from uf50/uf50-06.cnf
+2025-02-04 14:23:05,171 - INFO - Formula is SAT. Total run time (10): 0.625474 seconds. Avg time: 0.062547 sec. Algorithm dp_default called 66 times.
+2025-02-04 14:23:05,171 - INFO - Starting Algorithm dp_default with clauses from uf50/uf50-07.cnf
+2025-02-04 14:23:06,168 - INFO - Formula is SAT. Total run time (10): 0.993839 seconds. Avg time: 0.099384 sec. Algorithm dp_default called 143 times.
+2025-02-04 14:23:06,168 - INFO - Starting Algorithm dp_default with clauses from uf50/uf50-08.cnf
+2025-02-04 14:23:10,540 - INFO - Formula is SAT. Total run time (10): 4.362762 seconds. Avg time: 0.436276 sec. Algorithm dp_default called 870 times.
+2025-02-04 14:23:10,541 - INFO - Starting Algorithm dp_default with clauses from uf50/uf50-09.cnf
+2025-02-04 14:23:20,764 - INFO - Formula is SAT. Total run time (10): 10.219988 seconds. Avg time: 1.021999 sec. Algorithm dp_default called 1974 times.
+2025-02-04 14:23:20,764 - INFO - Starting Algorithm dp_default with clauses from uuf50/uuf50-01.cnf
+2025-02-04 14:23:38,209 - INFO - Formula is UNSAT. Total run time (10): 17.440947 seconds. Avg time: 1.744095 sec. Algorithm dp_default called 3090 times.
+2025-02-04 14:23:38,209 - INFO - Starting Algorithm dp_default with clauses from uuf50/uuf50-010.cnf
+2025-02-04 14:23:52,318 - INFO - Formula is UNSAT. Total run time (10): 14.104698 seconds. Avg time: 1.410470 sec. Algorithm dp_default called 2428 times.
+2025-02-04 14:23:52,318 - INFO - Starting Algorithm dp_default with clauses from uuf50/uuf50-02.cnf
+2025-02-04 14:24:00,384 - INFO - Formula is UNSAT. Total run time (10): 8.062880 seconds. Avg time: 0.806288 sec. Algorithm dp_default called 1611 times.
+2025-02-04 14:24:00,385 - INFO - Starting Algorithm dp_default with clauses from uuf50/uuf50-03.cnf
+2025-02-04 14:24:17,410 - INFO - Formula is UNSAT. Total run time (10): 17.022138 seconds. Avg time: 1.702214 sec. Algorithm dp_default called 3200 times.
+2025-02-04 14:24:17,411 - INFO - Starting Algorithm dp_default with clauses from uuf50/uuf50-04.cnf
+2025-02-04 14:24:24,677 - INFO - Formula is UNSAT. Total run time (10): 7.262456 seconds. Avg time: 0.726246 sec. Algorithm dp_default called 1150 times.
+2025-02-04 14:24:24,677 - INFO - Starting Algorithm dp_default with clauses from uuf50/uuf50-05.cnf
+2025-02-04 14:24:34,757 - INFO - Formula is UNSAT. Total run time (10): 10.076781 seconds. Avg time: 1.007678 sec. Algorithm dp_default called 1614 times.
+2025-02-04 14:24:34,757 - INFO - Starting Algorithm dp_default with clauses from uuf50/uuf50-06.cnf
+2025-02-04 14:24:56,297 - INFO - Formula is UNSAT. Total run time (10): 21.535796 seconds. Avg time: 2.153580 sec. Algorithm dp_default called 4109 times.
+2025-02-04 14:24:56,297 - INFO - Starting Algorithm dp_default with clauses from uuf50/uuf50-07.cnf
+2025-02-04 14:25:08,782 - INFO - Formula is UNSAT. Total run time (10): 12.481126 seconds. Avg time: 1.248113 sec. Algorithm dp_default called 2239 times.
+2025-02-04 14:25:08,782 - INFO - Starting Algorithm dp_default with clauses from uuf50/uuf50-08.cnf
+2025-02-04 14:25:26,572 - INFO - Formula is UNSAT. Total run time (10): 17.786149 seconds. Avg time: 1.778615 sec. Algorithm dp_default called 2791 times.
+2025-02-04 14:25:26,572 - INFO - Starting Algorithm dp_default with clauses from uuf50/uuf50-09.cnf
+2025-02-04 14:25:34,914 - INFO - Formula is UNSAT. Total run time (10): 8.338125 seconds. Avg time: 0.833812 sec. Algorithm dp_default called 1188 times.
+2025-02-04 14:25:34,914 - INFO - Total time taken: 172.61264 seconds for 20 files, with 10 run(s) each.
+Running via PyPy algorithm dp 10 times...
+2025-02-04 14:25:35,047 - INFO - Starting Algorithm dp with clauses from uf50/uf50-01.cnf
+2025-02-04 14:25:35,302 - INFO - Formula is SAT. Total run time (10): 0.240496 seconds. Avg time: 0.024050 sec. Algorithm dp called 83 times.
+2025-02-04 14:25:35,302 - INFO - Starting Algorithm dp with clauses from uf50/uf50-010.cnf
+2025-02-04 14:25:35,467 - INFO - Formula is SAT. Total run time (10): 0.160800 seconds. Avg time: 0.016080 sec. Algorithm dp called 70 times.
+2025-02-04 14:25:35,467 - INFO - Starting Algorithm dp with clauses from uf50/uf50-02.cnf
+2025-02-04 14:25:35,878 - INFO - Formula is SAT. Total run time (10): 0.406763 seconds. Avg time: 0.040676 sec. Algorithm dp called 187 times.
+2025-02-04 14:25:35,878 - INFO - Starting Algorithm dp with clauses from uf50/uf50-03.cnf
+2025-02-04 14:25:36,014 - INFO - Formula is SAT. Total run time (10): 0.132572 seconds. Avg time: 0.013257 sec. Algorithm dp called 59 times.
+2025-02-04 14:25:36,014 - INFO - Starting Algorithm dp with clauses from uf50/uf50-04.cnf
+2025-02-04 14:25:36,190 - INFO - Formula is SAT. Total run time (10): 0.171530 seconds. Avg time: 0.017153 sec. Algorithm dp called 72 times.
+2025-02-04 14:25:36,190 - INFO - Starting Algorithm dp with clauses from uf50/uf50-05.cnf
+2025-02-04 14:25:36,271 - INFO - Formula is SAT. Total run time (10): 0.077121 seconds. Avg time: 0.007712 sec. Algorithm dp called 38 times.
+2025-02-04 14:25:36,271 - INFO - Starting Algorithm dp with clauses from uf50/uf50-06.cnf
+2025-02-04 14:25:36,539 - INFO - Formula is SAT. Total run time (10): 0.264554 seconds. Avg time: 0.026455 sec. Algorithm dp called 144 times.
+2025-02-04 14:25:36,539 - INFO - Starting Algorithm dp with clauses from uf50/uf50-07.cnf
+2025-02-04 14:25:36,576 - INFO - Formula is SAT. Total run time (10): 0.032978 seconds. Avg time: 0.003298 sec. Algorithm dp called 14 times.
+2025-02-04 14:25:36,576 - INFO - Starting Algorithm dp with clauses from uf50/uf50-08.cnf
+2025-02-04 14:25:36,708 - INFO - Formula is SAT. Total run time (10): 0.128501 seconds. Avg time: 0.012850 sec. Algorithm dp called 70 times.
+2025-02-04 14:25:36,709 - INFO - Starting Algorithm dp with clauses from uf50/uf50-09.cnf
+2025-02-04 14:25:36,774 - INFO - Formula is SAT. Total run time (10): 0.055670 seconds. Avg time: 0.005567 sec. Algorithm dp called 41 times.
+2025-02-04 14:25:36,774 - INFO - Starting Algorithm dp with clauses from uuf50/uuf50-01.cnf
+2025-02-04 14:25:37,333 - INFO - Formula is UNSAT. Total run time (10): 0.554286 seconds. Avg time: 0.055429 sec. Algorithm dp called 250 times.
+2025-02-04 14:25:37,333 - INFO - Starting Algorithm dp with clauses from uuf50/uuf50-010.cnf
+2025-02-04 14:25:37,650 - INFO - Formula is UNSAT. Total run time (10): 0.312922 seconds. Avg time: 0.031292 sec. Algorithm dp called 141 times.
+2025-02-04 14:25:37,650 - INFO - Starting Algorithm dp with clauses from uuf50/uuf50-02.cnf
+2025-02-04 14:25:37,930 - INFO - Formula is UNSAT. Total run time (10): 0.275930 seconds. Avg time: 0.027593 sec. Algorithm dp called 121 times.
+2025-02-04 14:25:37,930 - INFO - Starting Algorithm dp with clauses from uuf50/uuf50-03.cnf
+2025-02-04 14:25:38,164 - INFO - Formula is UNSAT. Total run time (10): 0.230799 seconds. Avg time: 0.023080 sec. Algorithm dp called 111 times.
+2025-02-04 14:25:38,165 - INFO - Starting Algorithm dp with clauses from uuf50/uuf50-04.cnf
+2025-02-04 14:25:38,539 - INFO - Formula is UNSAT. Total run time (10): 0.371237 seconds. Avg time: 0.037124 sec. Algorithm dp called 185 times.
+2025-02-04 14:25:38,540 - INFO - Starting Algorithm dp with clauses from uuf50/uuf50-05.cnf
+2025-02-04 14:25:38,797 - INFO - Formula is UNSAT. Total run time (10): 0.252926 seconds. Avg time: 0.025293 sec. Algorithm dp called 114 times.
+2025-02-04 14:25:38,797 - INFO - Starting Algorithm dp with clauses from uuf50/uuf50-06.cnf
+2025-02-04 14:25:39,230 - INFO - Formula is UNSAT. Total run time (10): 0.429870 seconds. Avg time: 0.042987 sec. Algorithm dp called 200 times.
+2025-02-04 14:25:39,231 - INFO - Starting Algorithm dp with clauses from uuf50/uuf50-07.cnf
+2025-02-04 14:25:39,620 - INFO - Formula is UNSAT. Total run time (10): 0.385698 seconds. Avg time: 0.038570 sec. Algorithm dp called 194 times.
+2025-02-04 14:25:39,620 - INFO - Starting Algorithm dp with clauses from uuf50/uuf50-08.cnf
+2025-02-04 14:25:39,963 - INFO - Formula is UNSAT. Total run time (10): 0.339207 seconds. Avg time: 0.033921 sec. Algorithm dp called 144 times.
+2025-02-04 14:25:39,964 - INFO - Starting Algorithm dp with clauses from uuf50/uuf50-09.cnf
+2025-02-04 14:25:40,250 - INFO - Formula is UNSAT. Total run time (10): 0.282300 seconds. Avg time: 0.028230 sec. Algorithm dp called 120 times.
+2025-02-04 14:25:40,250 - INFO - Total time taken: 5.10616 seconds for 20 files, with 10 run(s) each.
+Running via PyPy algorithm classical_dpll 10 times...
+2025-02-04 14:25:40,374 - INFO - Starting Algorithm classical_dpll with clauses from uf50/uf50-01.cnf
+2025-02-04 14:25:40,564 - INFO - Formula is SAT. Total run time (10): 0.175364 seconds. Avg time: 0.017536 sec. Algorithm classical_dpll called 67 times.
+2025-02-04 14:25:40,564 - INFO - Starting Algorithm classical_dpll with clauses from uf50/uf50-010.cnf
+2025-02-04 14:25:40,658 - INFO - Formula is SAT. Total run time (10): 0.090886 seconds. Avg time: 0.009089 sec. Algorithm classical_dpll called 72 times.
+2025-02-04 14:25:40,658 - INFO - Starting Algorithm classical_dpll with clauses from uf50/uf50-02.cnf
+2025-02-04 14:25:41,102 - INFO - Formula is SAT. Total run time (10): 0.439921 seconds. Avg time: 0.043992 sec. Algorithm classical_dpll called 408 times.
+2025-02-04 14:25:41,102 - INFO - Starting Algorithm classical_dpll with clauses from uf50/uf50-03.cnf
+2025-02-04 14:25:41,116 - INFO - Formula is SAT. Total run time (10): 0.010344 seconds. Avg time: 0.001034 sec. Algorithm classical_dpll called 15 times.
+2025-02-04 14:25:41,116 - INFO - Starting Algorithm classical_dpll with clauses from uf50/uf50-04.cnf
+2025-02-04 14:25:41,406 - INFO - Formula is SAT. Total run time (10): 0.286520 seconds. Avg time: 0.028652 sec. Algorithm classical_dpll called 197 times.
+2025-02-04 14:25:41,406 - INFO - Starting Algorithm classical_dpll with clauses from uf50/uf50-05.cnf
+2025-02-04 14:25:41,435 - INFO - Formula is SAT. Total run time (10): 0.024894 seconds. Avg time: 0.002489 sec. Algorithm classical_dpll called 29 times.
+2025-02-04 14:25:41,435 - INFO - Starting Algorithm classical_dpll with clauses from uf50/uf50-06.cnf
+2025-02-04 14:25:41,455 - INFO - Formula is SAT. Total run time (10): 0.016987 seconds. Avg time: 0.001699 sec. Algorithm classical_dpll called 13 times.
+2025-02-04 14:25:41,455 - INFO - Starting Algorithm classical_dpll with clauses from uf50/uf50-07.cnf
+2025-02-04 14:25:41,489 - INFO - Formula is SAT. Total run time (10): 0.030506 seconds. Avg time: 0.003051 sec. Algorithm classical_dpll called 25 times.
+2025-02-04 14:25:41,489 - INFO - Starting Algorithm classical_dpll with clauses from uf50/uf50-08.cnf
+2025-02-04 14:25:41,660 - INFO - Formula is SAT. Total run time (10): 0.166965 seconds. Avg time: 0.016697 sec. Algorithm classical_dpll called 134 times.
+2025-02-04 14:25:41,660 - INFO - Starting Algorithm classical_dpll with clauses from uf50/uf50-09.cnf
+2025-02-04 14:25:42,012 - INFO - Formula is SAT. Total run time (10): 0.348396 seconds. Avg time: 0.034840 sec. Algorithm classical_dpll called 279 times.
+2025-02-04 14:25:42,012 - INFO - Starting Algorithm classical_dpll with clauses from uuf50/uuf50-01.cnf
+2025-02-04 14:25:42,663 - INFO - Formula is UNSAT. Total run time (10): 0.646696 seconds. Avg time: 0.064670 sec. Algorithm classical_dpll called 447 times.
+2025-02-04 14:25:42,663 - INFO - Starting Algorithm classical_dpll with clauses from uuf50/uuf50-010.cnf
+2025-02-04 14:25:43,219 - INFO - Formula is UNSAT. Total run time (10): 0.552114 seconds. Avg time: 0.055211 sec. Algorithm classical_dpll called 389 times.
+2025-02-04 14:25:43,219 - INFO - Starting Algorithm classical_dpll with clauses from uuf50/uuf50-02.cnf
+2025-02-04 14:25:43,525 - INFO - Formula is UNSAT. Total run time (10): 0.302030 seconds. Avg time: 0.030203 sec. Algorithm classical_dpll called 243 times.
+2025-02-04 14:25:43,525 - INFO - Starting Algorithm classical_dpll with clauses from uuf50/uuf50-03.cnf
+2025-02-04 14:25:44,163 - INFO - Formula is UNSAT. Total run time (10): 0.633577 seconds. Avg time: 0.063358 sec. Algorithm classical_dpll called 458 times.
+2025-02-04 14:25:44,163 - INFO - Starting Algorithm classical_dpll with clauses from uuf50/uuf50-04.cnf
+2025-02-04 14:25:44,431 - INFO - Formula is UNSAT. Total run time (10): 0.264331 seconds. Avg time: 0.026433 sec. Algorithm classical_dpll called 166 times.
+2025-02-04 14:25:44,431 - INFO - Starting Algorithm classical_dpll with clauses from uuf50/uuf50-05.cnf
+2025-02-04 14:25:44,839 - INFO - Formula is UNSAT. Total run time (10): 0.404559 seconds. Avg time: 0.040456 sec. Algorithm classical_dpll called 286 times.
+2025-02-04 14:25:44,840 - INFO - Starting Algorithm classical_dpll with clauses from uuf50/uuf50-06.cnf
+2025-02-04 14:25:45,693 - INFO - Formula is UNSAT. Total run time (10): 0.849682 seconds. Avg time: 0.084968 sec. Algorithm classical_dpll called 609 times.
+2025-02-04 14:25:45,694 - INFO - Starting Algorithm classical_dpll with clauses from uuf50/uuf50-07.cnf
+2025-02-04 14:25:46,212 - INFO - Formula is UNSAT. Total run time (10): 0.514339 seconds. Avg time: 0.051434 sec. Algorithm classical_dpll called 366 times.
+2025-02-04 14:25:46,212 - INFO - Starting Algorithm classical_dpll with clauses from uuf50/uuf50-08.cnf
+2025-02-04 14:25:46,862 - INFO - Formula is UNSAT. Total run time (10): 0.646125 seconds. Avg time: 0.064613 sec. Algorithm classical_dpll called 419 times.
+2025-02-04 14:25:46,862 - INFO - Starting Algorithm classical_dpll with clauses from uuf50/uuf50-09.cnf
+2025-02-04 14:25:47,175 - INFO - Formula is UNSAT. Total run time (10): 0.309230 seconds. Avg time: 0.030923 sec. Algorithm classical_dpll called 180 times.
+2025-02-04 14:25:47,175 - INFO - Total time taken: 6.71347 seconds for 20 files, with 10 run(s) each.
+Running via PyPy algorithm dpll 10 times...
+2025-02-04 14:25:47,300 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-01.cnf
+2025-02-04 14:25:47,469 - INFO - Formula is SAT. Total run time (10): 0.154675 seconds. Avg time: 0.015467 sec. Algorithm dpll called 56 times.
+2025-02-04 14:25:47,469 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-010.cnf
+2025-02-04 14:25:47,558 - INFO - Formula is SAT. Total run time (10): 0.085113 seconds. Avg time: 0.008511 sec. Algorithm dpll called 48 times.
+2025-02-04 14:25:47,558 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-02.cnf
+2025-02-04 14:25:47,685 - INFO - Formula is SAT. Total run time (10): 0.122701 seconds. Avg time: 0.012270 sec. Algorithm dpll called 82 times.
+2025-02-04 14:25:47,685 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-03.cnf
+2025-02-04 14:25:47,745 - INFO - Formula is SAT. Total run time (10): 0.056736 seconds. Avg time: 0.005674 sec. Algorithm dpll called 39 times.
+2025-02-04 14:25:47,745 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-04.cnf
+2025-02-04 14:25:47,828 - INFO - Formula is SAT. Total run time (10): 0.078843 seconds. Avg time: 0.007884 sec. Algorithm dpll called 45 times.
+2025-02-04 14:25:47,828 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-05.cnf
+2025-02-04 14:25:47,878 - INFO - Formula is SAT. Total run time (10): 0.046429 seconds. Avg time: 0.004643 sec. Algorithm dpll called 37 times.
+2025-02-04 14:25:47,878 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-06.cnf
+2025-02-04 14:25:48,076 - INFO - Formula is SAT. Total run time (10): 0.194568 seconds. Avg time: 0.019457 sec. Algorithm dpll called 149 times.
+2025-02-04 14:25:48,076 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-07.cnf
+2025-02-04 14:25:48,098 - INFO - Formula is SAT. Total run time (10): 0.018600 seconds. Avg time: 0.001860 sec. Algorithm dpll called 22 times.
+2025-02-04 14:25:48,099 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-08.cnf
+2025-02-04 14:25:48,169 - INFO - Formula is SAT. Total run time (10): 0.066722 seconds. Avg time: 0.006672 sec. Algorithm dpll called 51 times.
+2025-02-04 14:25:48,169 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-09.cnf
+2025-02-04 14:25:48,191 - INFO - Formula is SAT. Total run time (10): 0.018450 seconds. Avg time: 0.001845 sec. Algorithm dpll called 25 times.
+2025-02-04 14:25:48,191 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-01.cnf
+2025-02-04 14:25:48,494 - INFO - Formula is UNSAT. Total run time (10): 0.299462 seconds. Avg time: 0.029946 sec. Algorithm dpll called 178 times.
+2025-02-04 14:25:48,494 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-010.cnf
+2025-02-04 14:25:48,632 - INFO - Formula is UNSAT. Total run time (10): 0.134497 seconds. Avg time: 0.013450 sec. Algorithm dpll called 86 times.
+2025-02-04 14:25:48,633 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-02.cnf
+2025-02-04 14:25:48,782 - INFO - Formula is UNSAT. Total run time (10): 0.145386 seconds. Avg time: 0.014539 sec. Algorithm dpll called 87 times.
+2025-02-04 14:25:48,782 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-03.cnf
+2025-02-04 14:25:48,922 - INFO - Formula is UNSAT. Total run time (10): 0.135934 seconds. Avg time: 0.013593 sec. Algorithm dpll called 86 times.
+2025-02-04 14:25:48,922 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-04.cnf
+2025-02-04 14:25:49,114 - INFO - Formula is UNSAT. Total run time (10): 0.188819 seconds. Avg time: 0.018882 sec. Algorithm dpll called 118 times.
+2025-02-04 14:25:49,115 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-05.cnf
+2025-02-04 14:25:49,244 - INFO - Formula is UNSAT. Total run time (10): 0.125270 seconds. Avg time: 0.012527 sec. Algorithm dpll called 81 times.
+2025-02-04 14:25:49,244 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-06.cnf
+2025-02-04 14:25:49,442 - INFO - Formula is UNSAT. Total run time (10): 0.194082 seconds. Avg time: 0.019408 sec. Algorithm dpll called 115 times.
+2025-02-04 14:25:49,442 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-07.cnf
+2025-02-04 14:25:49,617 - INFO - Formula is UNSAT. Total run time (10): 0.171160 seconds. Avg time: 0.017116 sec. Algorithm dpll called 111 times.
+2025-02-04 14:25:49,617 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-08.cnf
+2025-02-04 14:25:49,790 - INFO - Formula is UNSAT. Total run time (10): 0.168471 seconds. Avg time: 0.016847 sec. Algorithm dpll called 102 times.
+2025-02-04 14:25:49,790 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-09.cnf
+2025-02-04 14:25:49,932 - INFO - Formula is UNSAT. Total run time (10): 0.138458 seconds. Avg time: 0.013846 sec. Algorithm dpll called 75 times.
+2025-02-04 14:25:49,932 - INFO - Total time taken: 2.54438 seconds for 20 files, with 10 run(s) each.
+Running via PyPy algorithm dpll_watchers 10 times...
+2025-02-04 14:25:50,075 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-01.cnf
+2025-02-04 14:25:50,321 - INFO - Formula is SAT. Total run time (10): 0.229768 seconds. Avg time: 0.022977 sec. Algorithm dpll called 22 times.
+2025-02-04 14:25:50,322 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-010.cnf
+2025-02-04 14:25:50,460 - INFO - Formula is SAT. Total run time (10): 0.134969 seconds. Avg time: 0.013497 sec. Algorithm dpll called 22 times.
+2025-02-04 14:25:50,460 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-02.cnf
+2025-02-04 14:25:50,584 - INFO - Formula is SAT. Total run time (10): 0.113871 seconds. Avg time: 0.011387 sec. Algorithm dpll called 39 times.
+2025-02-04 14:25:50,584 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-03.cnf
+2025-02-04 14:25:50,636 - INFO - Formula is SAT. Total run time (10): 0.048435 seconds. Avg time: 0.004843 sec. Algorithm dpll called 16 times.
+2025-02-04 14:25:50,636 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-04.cnf
+2025-02-04 14:25:50,736 - INFO - Formula is SAT. Total run time (10): 0.096170 seconds. Avg time: 0.009617 sec. Algorithm dpll called 25 times.
+2025-02-04 14:25:50,736 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-05.cnf
+2025-02-04 14:25:50,786 - INFO - Formula is SAT. Total run time (10): 0.046361 seconds. Avg time: 0.004636 sec. Algorithm dpll called 20 times.
+2025-02-04 14:25:50,786 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-06.cnf
+2025-02-04 14:25:50,974 - INFO - Formula is SAT. Total run time (10): 0.183923 seconds. Avg time: 0.018392 sec. Algorithm dpll called 62 times.
+2025-02-04 14:25:50,974 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-07.cnf
+2025-02-04 14:25:50,995 - INFO - Formula is SAT. Total run time (10): 0.017044 seconds. Avg time: 0.001704 sec. Algorithm dpll called 14 times.
+2025-02-04 14:25:50,995 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-08.cnf
+2025-02-04 14:25:51,069 - INFO - Formula is SAT. Total run time (10): 0.068830 seconds. Avg time: 0.006883 sec. Algorithm dpll called 27 times.
+2025-02-04 14:25:51,069 - INFO - Starting Algorithm dpll with clauses from uf50/uf50-09.cnf
+2025-02-04 14:25:51,106 - INFO - Formula is SAT. Total run time (10): 0.031826 seconds. Avg time: 0.003183 sec. Algorithm dpll called 16 times.
+2025-02-04 14:25:51,106 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-01.cnf
+2025-02-04 14:25:51,301 - INFO - Formula is UNSAT. Total run time (10): 0.191848 seconds. Avg time: 0.019185 sec. Algorithm dpll called 87 times.
+2025-02-04 14:25:51,302 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-010.cnf
+2025-02-04 14:25:51,377 - INFO - Formula is UNSAT. Total run time (10): 0.071641 seconds. Avg time: 0.007164 sec. Algorithm dpll called 35 times.
+2025-02-04 14:25:51,378 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-02.cnf
+2025-02-04 14:25:51,465 - INFO - Formula is UNSAT. Total run time (10): 0.083290 seconds. Avg time: 0.008329 sec. Algorithm dpll called 38 times.
+2025-02-04 14:25:51,465 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-03.cnf
+2025-02-04 14:25:51,559 - INFO - Formula is UNSAT. Total run time (10): 0.089740 seconds. Avg time: 0.008974 sec. Algorithm dpll called 38 times.
+2025-02-04 14:25:51,559 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-04.cnf
+2025-02-04 14:25:51,671 - INFO - Formula is UNSAT. Total run time (10): 0.107038 seconds. Avg time: 0.010704 sec. Algorithm dpll called 54 times.
+2025-02-04 14:25:51,671 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-05.cnf
+2025-02-04 14:25:51,745 - INFO - Formula is UNSAT. Total run time (10): 0.069818 seconds. Avg time: 0.006982 sec. Algorithm dpll called 35 times.
+2025-02-04 14:25:51,745 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-06.cnf
+2025-02-04 14:25:51,892 - INFO - Formula is UNSAT. Total run time (10): 0.136479 seconds. Avg time: 0.013648 sec. Algorithm dpll called 51 times.
+2025-02-04 14:25:51,893 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-07.cnf
+2025-02-04 14:25:51,998 - INFO - Formula is UNSAT. Total run time (10): 0.101588 seconds. Avg time: 0.010159 sec. Algorithm dpll called 47 times.
+2025-02-04 14:25:51,998 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-08.cnf
+2025-02-04 14:25:52,120 - INFO - Formula is UNSAT. Total run time (10): 0.111011 seconds. Avg time: 0.011101 sec. Algorithm dpll called 44 times.
+2025-02-04 14:25:52,121 - INFO - Starting Algorithm dpll with clauses from uuf50/uuf50-09.cnf
+2025-02-04 14:25:52,196 - INFO - Formula is UNSAT. Total run time (10): 0.071151 seconds. Avg time: 0.007115 sec. Algorithm dpll called 35 times.
+2025-02-04 14:25:52,196 - INFO - Total time taken: 2.00480 seconds for 20 files, with 10 run(s) each.
+Running via PyPy algorithm dp 1 time on large problems only...
+2025-02-04 14:25:52,320 - INFO - Starting Algorithm dp with clauses from uf175-01.cnf
+2025-02-04 14:26:26,491 - INFO - Formula is SAT. Total run time (1): 34.163758 seconds. Avg time: 34.163758 sec. Algorithm dp called 22715 times.
+2025-02-04 14:26:26,492 - INFO - Starting Algorithm dp with clauses from uuf150-01.cnf
+2025-02-04 14:27:21,028 - INFO - Formula is UNSAT. Total run time (1): 54.533317 seconds. Avg time: 54.533317 sec. Algorithm dp called 42239 times.
+2025-02-04 14:27:21,028 - INFO - Total time taken: 88.69707 seconds for 2 files, with 1 run(s) each.
+Running via PyPy algorithm dpll 1 time on large problems only...
+2025-02-04 16:41:21,904 - INFO - Starting Algorithm dpll with clauses from uf175-01.cnf
+2025-02-04 16:41:46,672 - INFO - Formula is SAT. Total run time (1): 24.761105 seconds. Avg time: 24.761105 sec. Algorithm dpll called 19155 times.
+2025-02-04 16:41:46,673 - INFO - Starting Algorithm dpll with clauses from uuf150-01.cnf
+2025-02-04 16:42:16,145 - INFO - Formula is UNSAT. Total run time (1): 29.469262 seconds. Avg time: 29.469262 sec. Algorithm dpll called 27501 times.
+2025-02-04 16:42:16,146 - INFO - Total time taken: 54.23037 seconds for 2 files, with 1 run(s) each.
+Running via PyPy algorithm dpll_watchers 1 time on large problems only...
+2025-02-04 16:42:16,299 - INFO - Starting Algorithm dpll with clauses from uf175-01.cnf
+2025-02-04 16:42:22,535 - INFO - Formula is SAT. Total run time (1): 6.226998 seconds. Avg time: 6.226998 sec. Algorithm dpll called 7936 times.
+2025-02-04 16:42:22,536 - INFO - Starting Algorithm dpll with clauses from uuf150-01.cnf
+2025-02-04 16:42:29,628 - INFO - Formula is UNSAT. Total run time (1): 7.088344 seconds. Avg time: 7.088344 sec. Algorithm dpll called 11398 times.
+2025-02-04 16:42:29,628 - INFO - Total time taken: 13.31534 seconds for 2 files, with 1 run(s) each.

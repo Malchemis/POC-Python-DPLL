@@ -1,0 +1,176 @@
+         2335018368 function calls (2334709038 primitive calls) in 257.532 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000  258.771  258.771 /home/malchemis/PycharmProjects/POC-Python-DPLL/main.py:30(main)
+        1    0.005    0.005  258.769  258.769 /home/malchemis/PycharmProjects/POC-Python-DPLL/utils.py:68(run_dp_on_files)
+309520/200    1.927    0.000  258.652    1.293 /home/malchemis/PycharmProjects/POC-Python-DPLL/dp_baseline.py:178(dp_default)
+   597190   85.535    0.000   85.554    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/dp_baseline.py:162(formulas_equal)
+   310500    0.211    0.000   82.836    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/dp_baseline.py:89(third_rule)
+   310500    2.219    0.000   82.473    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/dp_baseline.py:75(find_single_literal)
+ 67117090   37.074    0.000   80.307    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/dp_baseline.py:64(exists_in_clauses)
+    23760    0.057    0.000   58.927    0.002 /home/malchemis/PycharmProjects/POC-Python-DPLL/dp_baseline.py:118(fourth_rule)
+    23760   48.393    0.002   58.076    0.002 /home/malchemis/PycharmProjects/POC-Python-DPLL/dp_baseline.py:102(find_superset_clauses)
+1647030770   43.232    0.000   43.232    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/dp_baseline.py:72(<genexpr>)
+   596210    0.846    0.000   14.241    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/dp_baseline.py:47(second_rule)
+   606420    0.061    0.000   13.284    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/dp_baseline.py:25(remove_value_from_clauses)
+   596260    0.028    0.000   13.086    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/dp_baseline.py:14(first_rule)
+   596260    1.409    0.000   13.058    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/dp_baseline.py:21(<listcomp>)
+ 53530090   11.984    0.000   11.984    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/dp_baseline.py:33(<listcomp>)
+ 55133300   11.649    0.000   11.649    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/dp_baseline.py:1(is_tautology)
+481717310    9.477    0.000    9.477    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/dp_baseline.py:112(<genexpr>)
+    23340    0.078    0.000    1.988    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/dp_baseline.py:143(fifth_rule)
+   655610    0.093    0.000    1.875    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/dp_baseline.py:36(remove_clauses_with_value)
+   655610    1.782    0.000    1.782    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/dp_baseline.py:44(<listcomp>)
+    23760    0.794    0.000    0.794    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/dp_baseline.py:126(<listcomp>)
+24400757/24400754    0.256    0.000    0.256    0.000 {built-in function len}
+    20482    0.206    0.000    0.206    0.000 {method 'append' of 'list' objects}
+      200    0.051    0.000    0.102    0.001 /home/malchemis/PycharmProjects/POC-Python-DPLL/utils.py:42(read_cnf)
+    46170    0.033    0.000    0.085    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:1455(debug)
+    23340    0.008    0.000    0.060    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/dp_baseline.py:129(find_non_single_literal)
+    46211    0.052    0.000    0.052    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:1724(isEnabledFor)
+      200    0.019    0.000    0.020    0.000 {built-in function _io.open}
+    43600    0.010    0.000    0.010    0.000 {method 'add' of 'set' objects}
+   134420    0.009    0.000    0.009    0.000 {method 'startswith' of 'str' objects}
+       41    0.000    0.000    0.009    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:1467(info)
+       41    0.000    0.000    0.008    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:1600(_log)
+   309520    0.008    0.000    0.008    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/utils.py:17(increment)
+       41    0.000    0.000    0.005    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:1626(handle)
+       41    0.000    0.000    0.005    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:1680(callHandlers)
+    43800    0.005    0.000    0.005    0.000 {method 'split' of 'str' objects}
+       41    0.000    0.000    0.005    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:955(handle)
+       41    0.000    0.000    0.005    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:1088(emit)
+       41    0.000    0.000    0.003    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:932(format)
+       41    0.000    0.000    0.003    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:665(format)
+       41    0.000    0.000    0.002    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:597(formatTime)
+      200    0.002    0.000    0.002    0.000 {method '__exit__' of '_io._IOBase' objects}
+       41    0.000    0.000    0.002    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:1585(makeRecord)
+      200    0.001    0.000    0.002    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/codecs.py:319(decode)
+        2    0.000    0.000    0.002    0.001 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/glob.py:13(glob)
+       41    0.001    0.000    0.002    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:283(__init__)
+       22    0.000    0.000    0.002    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/glob.py:53(_iglob)
+       41    0.002    0.000    0.002    0.000 {built-in function time.localtime}
+        2    0.000    0.000    0.002    0.001 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/glob.py:93(_glob1)
+    43800    0.001    0.000    0.001    0.000 {method 'strip' of 'str' objects}
+        2    0.000    0.000    0.001    0.001 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/fnmatch.py:54(filter)
+       41    0.001    0.000    0.001    0.000 {method 'write' of '_io.TextIOWrapper' objects}
+      200    0.001    0.000    0.001    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/codecs.py:309(__init__)
+    43600    0.001    0.000    0.001    0.000 {method 'pop' of 'list' objects}
+      441    0.001    0.000    0.001    0.000 {built-in function time.time}
+      200    0.001    0.000    0.001    0.000 {built-in function _codecs.utf_8_decode}
+        1    0.000    0.000    0.001    0.001 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/fnmatch.py:44(_compile_pattern)
+        1    0.000    0.000    0.001    0.001 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/re.py:249(compile)
+        1    0.000    0.000    0.001    0.001 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/re.py:288(_compile)
+       41    0.000    0.000    0.001    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:1549(findCaller)
+        1    0.000    0.000    0.001    0.001 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_compile.py:783(compile)
+       41    0.000    0.000    0.000    0.000 {built-in function time.strftime}
+        2    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/glob.py:162(_listdir)
+        1    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_parse.py:944(parse)
+      2/1    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_parse.py:436(_parse_sub)
+       41    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:1077(flush)
+      200    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/utils.py:14(__init__)
+      2/1    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_parse.py:494(_parse)
+       22    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/glob.py:128(_iterdir)
+       41    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/posixpath.py:140(basename)
+       41    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/posixpath.py:117(splitext)
+       41    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:649(formatMessage)
+       41    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:438(format)
+      200    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/codecs.py:260(__init__)
+       89    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:198(cb)
+       20    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/posixpath.py:71(join)
+       41    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/encodings/utf_8.py:19(encode)
+       41    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:431(_format)
+        1    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_compile.py:622(_code)
+       82    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:912(acquire)
+       41    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:643(usesTime)
+        2    0.000    0.000    0.000    0.000 {built-in function posix.scandir}
+       41    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/genericpath.py:121(_splitext)
+       63    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/posixpath.py:41(_get_sep)
+       22    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/glob.py:215(_ishidden)
+      142    0.000    0.000    0.000    0.000 {built-in function isinstance}
+       22    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/glob.py:96(<genexpr>)
+       41    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:119(getLevelName)
+      123    0.000    0.000    0.000    0.000 {built-in function hasattr}
+       41    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:423(usesTime)
+       41    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:160(<lambda>)
+       41    0.000    0.000    0.000    0.000 {built-in function _codecs.utf_8_encode}
+        1    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/fnmatch.py:80(translate)
+       82    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:919(release)
+       82    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:806(filter)
+      175    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+       41    0.000    0.000    0.000    0.000 {built-in function posix.getpid}
+       43    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/posixpath.py:52(normcase)
+        1    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_compile.py:560(_compile_info)
+      3/1    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_compile.py:87(_compile)
+      125    0.000    0.000    0.000    0.000 {method 'rfind' of 'str' objects}
+       41    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:359(getMessage)
+       84    0.000    0.000    0.000    0.000 {method 'acquire' of '_thread.RLock' objects}
+       41    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/threading.py:1430(current_thread)
+        2    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/functools.py:460(_make_key)
+       20    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_parse.py:165(__getitem__)
+      147    0.000    0.000    0.000    0.000 {built-in function posix.fspath}
+       41    0.000    0.000    0.000    0.000 {method 'flush' of '_io.TextIOWrapper' objects}
+        2    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/posixpath.py:100(split)
+       10    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_parse.py:255(get)
+      3/1    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_parse.py:175(getwidth)
+        6    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/glob.py:208(has_magic)
+        4    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/re.py:269(escape)
+       41    0.000    0.000    0.000    0.000 {method 'find' of 'str' objects}
+       13    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_parse.py:234(__next)
+       84    0.000    0.000    0.000    0.000 {method 'release' of '_thread.RLock' objects}
+        2    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/contextlib.py:339(__exit__)
+        2    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/glob.py:26(iglob)
+       41    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/threading.py:1129(name)
+       20    0.000    0.000    0.000    0.000 {method 'match' of 're.Pattern' objects}
+       41    0.000    0.000    0.000    0.000 {built-in function sys._getframe}
+        1    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/enum.py:992(__and__)
+        2    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/functools.py:453(__init__)
+        2    0.000    0.000    0.000    0.000 {method 'close' of 'generator' objects}
+       82    0.000    0.000    0.000    0.000 {built-in function _thread.get_ident}
+       89    0.000    0.000    0.000    0.000 {built-in function _imp.acquire_lock}
+      2/1    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_compile.py:485(_get_literal_prefix)
+        2    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_parse.py:356(_escape)
+        4    0.000    0.000    0.000    0.000 {method 'translate' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        4    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_parse.py:287(tell)
+        1    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_parse.py:225(__init__)
+        7    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_parse.py:173(append)
+       89    0.000    0.000    0.000    0.000 {built-in function _imp.release_lock}
+        1    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_parse.py:868(_parse_flags)
+        2    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/enum.py:365(__call__)
+        5    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_parse.py:250(match)
+        5    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_parse.py:161(__len__)
+        6    0.000    0.000    0.000    0.000 {method 'search' of 're.Pattern' objects}
+        2    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:219(_acquireLock)
+       20    0.000    0.000    0.000    0.000 {method 'endswith' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_compile.py:447(_simple)
+        1    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_compile.py:516(_get_charset_prefix)
+        2    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/contextlib.py:335(__init__)
+        4    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/functools.py:484(<genexpr>)
+        2    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:228(_releaseLock)
+        2    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/enum.py:684(__new__)
+        2    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_compile.py:619(isstring)
+        4    0.000    0.000    0.000    0.000 {built-in function sys.audit}
+        3    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_parse.py:112(__init__)
+        7    0.000    0.000    0.000    0.000 {built-in function min}
+        2    0.000    0.000    0.000    0.000 {built-in function hash}
+        2    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_parse.py:82(groups)
+        1    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_parse.py:928(fix_flags)
+        1    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_parse.py:76(__init__)
+        3    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_compile.py:81(_combine_flags)
+        4    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/functools.py:457(__hash__)
+        2    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:1710(getEffectiveLevel)
+        2    0.000    0.000    0.000    0.000 {method 'rstrip' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/logging/__init__.py:1307(disable)
+        2    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/glob.py:199(_join)
+        3    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_compile.py:477(_get_iscased)
+        2    0.000    0.000    0.000    0.000 {method 'join' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/contextlib.py:337(__enter__)
+        4    0.000    0.000    0.000    0.000 {built-in function ord}
+        1    0.000    0.000    0.000    0.000 /home/malchemis/PycharmProjects/POC-Python-DPLL/pypy/lib/pypy3.10/sre_parse.py:169(__setitem__)
+        1    0.000    0.000    0.000    0.000 {method 'extend' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'items' of 'dict' objects}
+        2    0.000    0.000    0.000    0.000 {method '__exit__' of 'posix.ScandirIterator' objects}
+
+
