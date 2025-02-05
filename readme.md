@@ -1,5 +1,3 @@
-# README.md
-
 # Project: Optimized Davis–Putnam/DPLL SAT Solver
 
 ## Overview
@@ -24,10 +22,10 @@ Performance measurements and profiling results have been collected on benchmark 
 ├── main.py                # Main entry point for running tests
 ├── utils.py               # Utility functions (CNF parsing, counters, etc.)
 ├── schedule_runs.sh       # Bash script to run the tests across different implementations
-├── uf50/                 # SAT benchmark CNF files (satisfiable)
-├── uuf50/                # UNSAT benchmark CNF files
-├── uf175-01.cnf         # Large SAT instance
-└── uuf150-01.cnf        # Large UNSAT instance
+├── uf50/                  # SAT benchmark CNF files (satisfiable)
+├── uuf50/                 # UNSAT benchmark CNF files
+├── uf175-01.cnf           # Large SAT instance
+└── uuf150-01.cnf          # Large UNSAT instance
 ```
 
 ## Requirements
@@ -36,15 +34,7 @@ Performance measurements and profiling results have been collected on benchmark 
 - [PyPy](https://www.pypy.org/) (optional but recommended for enhanced performance)
 - Standard Python libraries (e.g., `argparse`, `logging`, `time`)
 
-For generating graphs, you will also need:
-- `pandas`
-- `seaborn`
-- `matplotlib`
 
-Install these packages (if not already installed) via:
-```bash
-pip install pandas seaborn matplotlib
-```
 
 ## How to Run
 
@@ -62,6 +52,8 @@ Run the main script (`main.py`) with the following command-line options:
 - `--run_on_large_cnf`: Set to `True` to include large CNF files in the test.
 - `--run_on_large_cnf_only`: Set to `True` to run tests only on large CNF files.
 - `--log_level`: Set the logging level (e.g., `DEBUG`, `INFO`).
+
+Note: logging has yet to be implemented in the dpll_watchers implementation.
 
 ### Example Usage
 
@@ -85,11 +77,11 @@ Then execute:
 ```bash
 ./schedule_runs.sh
 ```
-This script will run tests on all algorithms under both CPython and PyPy, and for both small and large CNF instances (where feasible).
+This script will run tests on all algorithms under both Python and PyPy, and for both small and large CNF instances (where feasible).
 
-## Profiling and Graphs
+## Profiling
 
-Profiling was performed using `cProfile` and the results are saved in the `results/` directory. To generate comparative graphs, use the provided Python snippet (see the **Graphical Analysis** section in the report).
+Profiling was performed using `cProfile` and the results are saved in the `results/` directory.
 
 ## Summary of Optimizations
 

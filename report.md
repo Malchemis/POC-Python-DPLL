@@ -1,6 +1,5 @@
 # Optimizing the Davis–Putnam Algorithm: A Comprehensive Analysis
 
-*Version: 1.0*  
 *Date: 2025-02-04*  
 *Author: Elias BOULANGER*
 
@@ -66,10 +65,10 @@ assess the benefits of alternative Python interpreters.
 The original `dp_default` code applied a series of transformation rules 
 (removal of tautologies, unit clause propagation, pure literal elimination, 
 and superset clause removal) recursively. Our profiling of `dp_default` 
-(using a representative run on SATLIB files) showed that:
+(using a representative run on SATLIB files repeated 10 times) showed that:
 
 - **Function Call Overhead:** Over 2.3 billion function calls were made with a 
-cumulative time of over 250 seconds.  
+cumulative time of over 257 seconds.  
 - **High-Frequency Operations:** Functions such as `formulas_equal`, `third_rule`,
 and `find_single_literal` (which internally calls `exists_in_clauses`) dominated 
 the runtime. For example, `exists_in_clauses` was called over 67 million times, 
@@ -84,7 +83,7 @@ Based on the profiling insights, we introduced several key modifications:
 #### 2.2.1 Data Structure Enhancements
 
 - **Immutable Sets for Clauses:** Converting clauses to `frozenset` objects 
-allowed for fast membership tests and prevented unintended modifications.
+allowed for fast membership tests.
 - **Array-Based Lookups:** In the DPLL variants, we replaced iterative searches 
 with fixed-size arrays (or lists indexed by variable number) to quickly compute 
 literal frequencies and branch selection scores. A first implementation used dictionaries
@@ -96,11 +95,15 @@ but was later optimized to use arrays for better performance (dictionaries were 
 - **Best Literal Selection:** In the optimized `dp` and `dpll` implementations, 
 we computed a score for each literal based on its frequency (using separate 
 arrays for positive and negative occurrences). This heuristic reduced the search 
-space by choosing the literal with the highest combined frequency.
+space by choosing the literal with the highest combined frequency. One other improvement we
+have observed is that you once you have found the best literal, you can compare the frequency
+of both polarities and return the one with the highest frequency.
 - **Pure Literal and Unit Propagation:** Our refined implementations repeatedly 
 applied unit propagation and pure literal elimination, taking advantage of set 
 comprehensions and early termination when the clause set was empty or contained 
 an empty clause.
+  Rule4 (subsumption) has been determined to not be useful in our case 
+as it was not activated a lot, and took a lot of time to compute.
 
 #### 2.2.3 Two-Literal Watching
 
@@ -112,14 +115,15 @@ unit propagation. As we only need to detect when a clause becomes unit (or empty
 we can skip clauses that are already satisfied or contain the assigned literal.
 - **State Restoration:** For branching, the algorithm saves the state of the 
 formula (active clauses, frequency arrays, occurrence lists, and watchers) to 
-allow backtracking without recomputation.
+allow backtracking without recomputation. This part is quite heavy on the memory
+and it could be improved with incremental undo mechanisms.
 
 #### 2.2.4 Interpreter Considerations
 
 - **PyPy vs. Pure Python:** Benchmarking showed that certain methods 
 (especially those using heavy recursion and dynamic memory allocation) 
 benefited significantly from PyPy’s JIT compilation. For example, the 
-watcher-based DPLL (`dpll_watchers`) ran in approximately 6–7 seconds 
+watcher-based DPLL (`dpll_watchers`) ran in approximately 5–7 seconds 
 on large problems under PyPy, compared to roughly 24–30 seconds using Pure Python.
 
 ---
@@ -133,25 +137,29 @@ Our experiments ran multiple algorithms on both SAT and UNSAT instances from the
 - Average run time per file
 - Number of recursive calls (or “algorithm calls”)
 
-Below is a summary (extracted from our logs):
+Below is a summary (extracted from our logs). 
+The time is given in seconds unless expressed otherwise,
+the recursive calls are calls per file given as a range (min–max) across all files.
 
-| Algorithm           | Approx. Average Time (uf50/uf50-*) per file | Average Time (uuf50/*) per file | Large Instance (uf175/uuf150)    | Notable Recursive Calls |
-|---------------------|---------------------------------------------|--------------------------------|----------------------------------|-------------------------|
-| **dp_default**      | 0.1–3                                       | 1.4–5.7                       | (too long to run)                | 200–4000 calls/file     |
-| **dp (optimized)**  | 0.01–0.08                                   | 0.06–0.12                     | 24 sec (uf175) / 29 sec (uuf150) | 40–250 calls/file       |
-| **classical_dpll**  | 0.002–0.19                                  | 0.045–0.19                    | (too long to run)                | 15–700 calls/file       |
-| **dpll (heuristic)**| 0.008–0.04                                  | 0.026–0.04                    | 0.6–0.3                          | 25–150 calls/file       |
-| **dpll_watchers**   | 0.004–0.02                                  | 0.007–0.02                    | 6–7                              | 14–90 calls/file        |
+| Algorithm                         | uf50/*     | uuf50/*    | Large Instance (uf175-uuf150) | Min-Max Recursive Calls (on small across all files) | Large Instance Recursive Calls (uf175-uuf150) |
+|-----------------------------------|------------|------------|-------------------------------|-----------------------------------------------------|-----------------------------------------------|
+| **dp_default**                    | 0.05–1     | 0.8–2.15   | (too long to run >> 2H)       | 31–4109                                             | N/A                                           |
+| **dp (optimized)**                | 0.003–0.04 | 0.23–0.55  | 34 - 54                       | 14–250                                              | 22715 – 42239                                 |
+| **classical_dpll (no heuristic)** | 0.001–0.04 | 0.03–0.08  | (too long to run >> 2H)       | 13–609                                              | N/A                                           |
+| **dpll (heuristic)**              | 0.002–0.02 | 0.01–0.03  | 24 - 29                       | 22–178                                              | 19155 – 27501                                 |
+| **dpll_watchers**                 | 0.002–0.02 | 0.007–0.02 | 6 - 7                         | 14–87                                               | 7936 - 11398                                  |
 
-*Note:* The times above are averages across multiple runs (10 runs per file) and reflect PyPy execution, which provided the most consistent speed-ups.
+*Note:* The times above are averages across multiple runs (10 runs per file) 
+and reflect PyPy execution, which provided the most consistent speed-ups.
 
-To see all the results in detail, refer to the detailed logs in the `results/` directory.
+To see all the results in detail, refer to the detailed logs in the `results/` 
+directory.
 
 ### 3.2 Profiling Insights
 
 #### Baseline (`dp_default`)
 
-- **Cumulative Time:** Over 258 seconds.
+- **Cumulative Time:** Over 257 seconds.
 - **Bottleneck Functions:** 
   - `exists_in_clauses` and `find_single_literal` (together consuming ~80 seconds 
 cumulatively).
@@ -160,7 +168,11 @@ cumulatively).
 #### Optimized DPLL (`dpll`)
 
 - **Cumulative Time:** Roughly 3.87 seconds.
+- **Key Improvements:** Direct array indexing and set operations significantly 
+reduced the time spent on clause manipulations. Heuristic branching also helped a lot 
+on large instances.
 - **Bottleneck Functions:**
+  - The method `add` of sets (due to the frequent clause updates).
   - The heuristic unit propagation and best literal search, but these operations 
 were far less expensive due to array-based counting and set operations.
   
@@ -170,10 +182,18 @@ were far less expensive due to array-based counting and set operations.
 fewer recursive calls).
 - **Key Improvements:** The two-literal watching mechanism limited the need to
 iterate over all clauses, thereby reducing the cumulative cost of unit propagation.
+  We detect early when we need to propagate a unit clause, and we only need to check the clauses that 
+are watching the negated literal.
+- **Bottleneck Functions:**:
+  - State Restoration: The memory overhead of saving the state for backtracking
+was noticeable but necessary for efficient branching.
+  - `has_empty_clause` is called frequently, can be optimized further by taking advantage
+of the 2-literal watching scheme.
 
 ## 4. Discussion
 
-The results confirm that careful algorithmic optimizations and appropriate data structure choices can dramatically improve performance:
+The results confirm that careful algorithmic optimizations and the appropriate 
+data structure and heuristic choices can dramatically improve performance:
 
 - **Data Structures:** Replacing list-based operations with set operations 
 (using `frozenset`) and array indexing led to orders-of-magnitude speed-ups.
@@ -191,20 +211,29 @@ interpreter for performance-critical applications.
 
 In conclusion, the combination of these optimizations not only reduced the 
 cumulative number of function calls but also reduced the per-call cost, 
-leading to substantial overall runtime improvements.
+leading to significant overall runtime improvements.
 
 ---
 
 ## 5. Conclusion
 
-This project demonstrates that both algorithmic strategies and low-level implementation details (such as data structures and interpreter choice) are critical in optimizing SAT solvers. Our experimental results, supported by detailed profiling, indicate that the optimized DP and DPLL algorithms (especially those using heuristics and the two-literal watching scheme) significantly outperform the baseline implementation. Furthermore, the dramatic improvements observed with PyPy highlight an often-underappreciated aspect of performance engineering in Python. Future work could explore incremental undo mechanisms for state restoration and further refinements in branching heuristics.
+This project demonstrates that both algorithmic strategies and 
+low-level implementation details (such as data structures and interpreter choice)
+are critical in optimizing SAT solvers. Our experimental results, supported by 
+detailed profiling, indicate that the optimized DP and DPLL algorithms 
+(especially those using heuristics and the two-literal watching scheme) 
+significantly outperform the baseline implementation. Furthermore, the dramatic
+improvements observed with PyPy highlight an often-underappreciated aspect of 
+performance engineering in Python. Future work could explore incremental undo 
+mechanisms for state restoration and further refinements in branching heuristics.
 
 ---
 
 # References
 
-1. Davis, M., & Putnam, H. (1960). A computing procedure for quantification theory. *Journal of the ACM (JACM)*, 7(3), 201-215.
-2. Davis, M., Logemann, G., & Loveland, D. (1962). A machine program for theorem-proving. *Communications of the ACM*, 5(7), 394-397.
-3. SATLIB Benchmark Suite. [http://www.cs.ubc.ca/~hoos/SATLIB/benchm.html](http://www.cs.ubc.ca/~hoos/SATLIB/benchm.html)
+1. Wikipédia DPLL: https://en.wikipedia.org/wiki/DPLL_algorithm
+2. Wikipédia DP: https://en.wikipedia.org/wiki/Davis%E2%80%93Putnam_algorithm
+3. Blog Post 2-Literal Watching: http://haz-tech.blogspot.com/2010/08/whos-watching-watch-literals.html?m=1
+4. SATLIB Benchmark Suite: [http://www.cs.ubc.ca/~hoos/SATLIB/benchm.html](http://www.cs.ubc.ca/~hoos/SATLIB/benchm.html)
 
 ---
